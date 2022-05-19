@@ -50,7 +50,6 @@ function StoreHome (props) {
           { name: 'חנות המוצרים', url: '/store' }
         ]}
       />
-      <div style={{ marginBottom: '3%' }}> </div>
       {!category && CategoryImagesRender()}
       <ProductsList addToCart={addToCart} category={categoryId} />
     </div>

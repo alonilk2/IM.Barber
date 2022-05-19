@@ -214,7 +214,7 @@ a:hover { color: #0066bf; text-decoration: none;} /* CSS link hover (green) */
     border: 2px solid lightgray;
     border-left: 0px;
     border-right: 0px;
-    padding: 5%;
+    padding: 1%;
 }
 .featured-products-col {
     height: 350px;
@@ -384,9 +384,10 @@ a:hover { color: #0066bf; text-decoration: none;} /* CSS link hover (green) */
     height: 700px;
     position: relative;
     margin: 0.3%;
-    flex-basis: 28%;
+    flex-basis: 24%;
     background-blend-mode:luminosity;
     display: flex;
+
 }
 .full {
     width: 100%;

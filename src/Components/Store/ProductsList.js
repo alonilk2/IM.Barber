@@ -1,14 +1,14 @@
-import React, { useEffect, useState, useRef } from "react";
-import "../../CSS/Store.css";
-import { useHistory, useLocation } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import useProducts from "../../Hooks/useProducts";
-import useCategories from "../../Hooks/useCategories";
 import {
   SHOW_ADD_CART,
   SERVER_ADDRESS,
   HIDE_CATEGORY,
 } from "../../Constants/generalConstants";
+import "../../CSS/Store.css";
+import useProducts from "../../Hooks/useProducts";
+import useCategories from "../../Hooks/useCategories";
 import animationData from "../../Lotties/loading";
 import Lottie from "react-lottie";
 import InfiniteScroll from "react-infinite-scroller";
@@ -23,7 +23,6 @@ const defaultOptions = {
 };
 
 function ProductsList(props) {
-  const [add, showAdd] = useState(false);
   const [_category, setCategory] = useState();
   const dispatch = useDispatch();
   const [ProductList, upload, remove, nextPage, TotalCount, fetching] =
@@ -32,10 +31,19 @@ function ProductsList(props) {
     });
   const CategoryArr = useCategories();
   const location = useLocation();
-  const initialRender = useRef(true);
   const searchFlag = useRef(false);
   const search = useSelector((state) => state.search);
   const category = useSelector((state) => state.general?.category);
+
+  useEffect(() => {
+    dispatch({ type: HIDE_CATEGORY });
+  }, [location]);
+
+  useEffect(() => {
+    CategoryArr?.forEach((cat) => {
+      if (cat.categoryid === category) setCategory(cat);
+    });
+  }, [category, CategoryArr]);
 
   const addCartItem = (e, product) => {
     e.preventDefault();
@@ -52,6 +60,7 @@ function ProductsList(props) {
       return null;
     }
   };
+
   const titleRender = () => {
     if (search && search.filterBy?.length > 0) {
       return null;
@@ -60,31 +69,11 @@ function ProductsList(props) {
     }
   };
 
-  useEffect(() => {
-    dispatch({ type: HIDE_CATEGORY });
-  }, [location]);
-
-  // useEffect(() => {
-  //   if (!initialRender.current && ProductList) {
-  //     showAdd(!add);
-  //   } else initialRender.current = false;
-  // }, [ProductList]);
-
-  useEffect(() => {
-    CategoryArr?.forEach((cat) => {
-      if (cat.categoryid === category) setCategory(cat);
-    });
-  }, [category, CategoryArr]);
-  useEffect(()=>{
-    // console.log(ProductList.length)
-
-  }, [ProductList])
   const renderProductList = () => {
     if (ProductList) {
-      // console.log(ProductList)
       return ProductList.map(function (product, idx) {
         return (
-          <div className="col featured-products-col">
+          <div className="col featured-products-col" key={idx}>
             <a href={`/product/${product.id}`} className={"product-container"}>
               <img
                 src={SERVER_ADDRESS + "/uploads/" + product.imgname}
@@ -140,7 +129,7 @@ function ProductsList(props) {
         </div>
       );
   };
-  
+
   return (
     <div>
       {categoryImagesRender()}

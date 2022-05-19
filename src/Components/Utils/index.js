@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { HIDE_ADD_CART } from '../../Constants/generalConstants'
 import PropTypes from 'prop-types'
 import DialogTitle from '@mui/material/DialogTitle'
 import Dialog from '@mui/material/Dialog'
 import animationData from '../../Lotties/add_cart'
 import Lottie from 'react-lottie'
-import { HIDE_ADD_CART } from '../../Constants/generalConstants'
 
 const defaultOptions = {
   loop: true,

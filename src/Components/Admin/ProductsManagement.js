@@ -25,7 +25,7 @@ export default function ProductsManagement (eKey) {
   const [success, setSuccess] = useState(false)
   const [edit, setEdit] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [ProductList, uploadProduct, removeProduct] = useProducts()
+  const [ProductList, uploadProduct, removeProduct] = useProducts({allProducts: true})
   const categoryArr = useCategories()
   let options = []
 
@@ -35,6 +35,7 @@ export default function ProductsManagement (eKey) {
     },
     [imageArr]
   )
+
   const { getRootProps, getInputProps } = useDropzone({ onDrop })
 
   const removeAll = () => {
@@ -142,6 +143,7 @@ export default function ProductsManagement (eKey) {
       })
     } else return null
   }
+
   const successAlert = () => {
     return (
       <Zoom>
@@ -151,6 +153,7 @@ export default function ProductsManagement (eKey) {
       </Zoom>
     )
   }
+
   function RemoveProduct () {
     return (
       <div
@@ -178,6 +181,7 @@ export default function ProductsManagement (eKey) {
       </div>
     )
   }
+
   useEffect(() => {
     if (categoryArr) {
       categoryArr.forEach(cat => {
