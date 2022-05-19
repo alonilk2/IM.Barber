@@ -1,0 +1,115 @@
+.product {
+    display:flex;
+    flex-direction:column;
+    white-space: pre-line;
+    margin: 15% auto;
+    width: 95%;
+    justify-content:center;
+    background-color: #e0c177 !important;
+    border-radius: 25px;
+}
+.accordion-button:focus {
+    border-color: #e0c177 !important;
+    box-shadow: unset !important;
+}
+
+
+.accordion-button:not(.collapsed), .accordion-button {
+    color: #000000 !important;
+    background-color: #e0c177 !important;
+}
+.accordion-body {
+    background-color: #e0c177 !important;
+
+}
+.product-img {
+    width: 450px;
+    object-fit: contain;
+    margin: auto;
+}
+.product-title {
+    font-weight:100;   
+    margin-bottom: 5%;
+    font-size: 28px !important;
+}
+.product-img-container {
+    justify-content: center;
+    align-items: center;
+    margin: 4%;
+    display: flex;
+}
+.product-info-container {
+    flex-direction:column;
+    padding: 5%;
+    min-height: 300px;
+    direction: rtl;
+    display:flex;
+    justify-content: center !important;
+    align-items:center !important;
+}
+.product-info-row {
+    line-height: 1.5;
+    color: black;
+}
+.product-price {
+    font-weight: 700;
+}
+.add-cart-btn{
+    border: 0px solid black;
+    width: 250px;
+    padding: 4%;
+    font-size: 20px;
+    font-weight: 300;
+    color: #e0c077;
+}
+.add-to-cart {
+    align-self: center;
+    margin: 1%;
+    background-color: #111111;
+    border-radius: 50px;
+}
+.lineover {
+    text-decoration: line-through;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    
+}
+.product-info-bottom {
+    display:flex;
+    flex-direction: column;
+    margin: 5% 0%;
+    width: 100%;
+}
+.product-about {
+    margin: 0% 5%;
+}
+.title {
+    font-size: 18px;
+    margin: 2%;
+}
+.similar {
+    display: flex;
+    flex-direction: row;
+}
+.swiper-container {
+    margin-top: 3%;
+    height: 500px;
+}
+.seller-title {
+    text-align: center;
+}
+@media only screen and (min-width: 800px) {
+    .product {
+        display:flex;
+        flex-direction:row-reverse !important;
+        margin-bottom: 0%;
+        width: 60%;
+        margin: 5% auto;
+    }
+    .add-to-cart {
+        align-self: flex-end;
+    }
+    .product-info-bottom {
+        width: unset;
+    }
+}

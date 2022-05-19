@@ -1,0 +1,382 @@
+
+
+    .home-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(270deg, rgba(132,0,255,1) 0%, rgba(38,0,255,1) 100%);
+        width: 220px !important;
+        height: 50px !important;
+        border-radius: 30px !important;
+        border-width: 0px !important;
+    }
+@media only screen and (min-width: 768px) {
+    body 
+    {
+        background: white;  /* fallback for old browsers */
+        display: block;
+        width: auto;
+        line-height: 1.4 !important;
+        overflow-x: hidden;
+    }
+
+    h5, h6 {
+        color:rgba(0,0,0,0.5);
+        text-align: center;
+    }
+    .container-1 {
+        max-width: 1980px !important;
+        height:fit-content;
+        overflow: hidden;
+    }
+
+    .second-container {
+        max-width: 2000px;
+        padding: 0% 10%;
+    }
+
+    .security-text {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .security-title {
+        font-weight:500;
+    }
+    .security-title-left {
+        font-weight:500;
+        margin-left: 20%;
+    }
+    .security-icon-left {
+        margin-left: 20%;
+        margin-top: 10%;
+    }
+    .security-icon-right {
+        margin-right: 20%;
+        margin-top: 10%;
+        float: right;
+    }
+    .security-paragraph-right {
+        font-size: 20px !important;
+        margin-right: 20%;
+    }
+    .security-paragraph-left {
+        font-size: 20px !important;
+        margin-left: 20%;
+    }
+
+    .sales {
+        display: flex;
+        flex-direction: row;
+        margin-right: 0% !important;
+        margin-left: 0% !important;
+    }
+    .col {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .sales-col:hover img {
+        position: relative;
+        filter: blur(2px) brightness(50%);
+    }
+    .sales-col:hover :not(img) {
+        opacity: 1;
+        transition:.3s;
+    }
+    .signin-btn {
+        background-color: transparent !important;
+        border-color: white !important;
+        border-width: 2px;
+        font-weight: bold;
+
+    }
+    .signup-btn {
+        background-color: rgba(255,255,255,1) !important;
+        border-color: transparent !important;
+        border-width: 2px;
+        color: black !important;
+        font-weight: bold;
+        margin: 1%;
+    }
+    .sales-img-1 {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        transition : -webkit-filter 200ms linear;
+        -webkit-transition : -webkit-filter 200ms linear;
+    }
+    .sales-paragraph {
+        position: absolute;
+        z-index: 1;
+        opacity: 0;
+        bottom: 4vw;
+        color: white;
+        font-size: 1.2rem;
+        line-height: 2rem;
+    }
+    .security-icon-col {
+        display: flex;
+        justify-content: center;
+    }
+    .sales-btn {
+        position: absolute;
+        height: 40px;
+        width: 180px !important;
+        z-index: 1;
+        opacity: 0;
+    }
+    .sales-info {
+        position: absolute;
+        display:flex;
+        flex-direction: column;
+        width: 12vw;
+        height:1rem;
+    }
+    .top-left {
+        left: 65%;
+        top: 70%;
+    }
+    .top-right {
+        left: 15%;
+        top: 70%;
+    }
+    .bottom-left {
+        left: 15%;
+        top: 70%;
+    }
+    .bottom-right {
+        left: 15%;
+        top: 70%;
+    }
+    .sales-col {width: inherit !important;}
+    .sales {
+        margin-top: 10rem;
+    }
+    .subscribe-ttl {
+        text-align: center;
+        margin: 0rem !important;
+        font-weight: bolder;
+    }
+    .subscribe-col {
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+    }
+    .sitemap-col {
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+    }
+    .HomePage-Container
+    {
+        display: flex;
+        flex-direction: column;
+        padding-top: 9.5%;
+        justify-content: center;
+        padding: 0% !important;
+        position: relative !important;
+
+    }
+
+    .main-title {
+        margin: auto;
+        margin-top: 15%;
+        margin-right: 50%;
+        margin-bottom: 5%;
+    }
+    .main-title-quantity-column {
+        display: flex;
+        flex-direction: column;
+        padding: 0px;
+    }
+
+    .main-title-quantity-row {
+        margin: auto;
+        margin-top: 5%;
+        width: 100%;
+
+    }
+
+    .main-title-quantity {
+        text-align: center;
+        color: white;
+    }
+
+    .home-shopnow-btn {
+        float: right;
+        margin-right: 0% !important;
+        margin-top: 5%;
+        animation: 1.5s ease-out 0s 1 slideOnStartLeft;
+
+    }
+
+    .left-menu, .right-menu{
+        display: flex;
+        flex-direction: row !important;
+    }
+    .left-menu {
+        justify-content: flex-end;
+        margin-right: 5%;
+    }
+    .right-menu {
+        justify-content: flex-start;
+        margin-left: 5%;
+
+    }
+    .navbar-btn { 
+        color: white;
+        margin: 20px;
+    }
+    .navbar-btn:hover { 
+        color: #71e6ff; 
+        text-decoration: none;
+    }
+    .topmenu {
+        margin-right: 5%;
+        display: flex;
+        flex-direction: row !important;
+        text-align: center;
+    }
+
+    .abdev-logo {
+        width: 15%;
+        margin: auto;
+        margin-top: 10%;
+    }
+    .logoc {
+        width: 70% !important;
+    }
+    .main-title-h1 {
+        color: white;
+        font-weight: bold;
+        font-size: 5em !important;
+        animation: 1.5s ease-out 0s 1 slideOnStartLeft;
+        margin-left: 8%;
+        flex: 1 !important;
+    }
+    
+    .main-title-h2{
+        color: white;
+        animation: 1.5s ease-out 0s 1 slideOnStartLeft;
+        margin-left: 8%;
+        flex: 1 !important;
+    }
+
+    .main-title-quantity-row {
+        margin: auto;
+        margin-top: 5%;
+        margin-left: 8%;
+        width: 100%;
+    }
+
+    .home-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(270deg, rgba(132,0,255,1) 0%, rgba(38,0,255,1) 100%);
+        width: 220px !important;
+        height: 50px !important;
+        border-radius: 30px !important;
+        border-width: 0px !important;
+    }
+
+    .home-shopnow-btn {
+        float: right;
+        margin-top: 5%;
+        animation: 1.5s ease-out 0s 1 slideOnStartLeft;
+    
+    }
+    .security, .bottom {
+        flex-direction: row !important;
+    }
+    .security-title-left {
+        font-weight:500;
+        margin-left: 5%;
+    }
+    .security-icon-left {
+        margin-left: 5%;
+        margin-top: 10%;
+        width: 30rem !important;
+    }
+    .security-icon-right {
+        margin-right: 5%;
+        margin-top: 10%;
+        float: right;
+        width: 30rem !important;
+    }
+    .security-paragraph-right {
+        font-size: 18px;
+        margin-right: 5%;
+    }
+    .security-paragraph-left {
+        font-size: 18px;
+        margin-left: 5%;
+    }
+    .sales-paragraph {
+        position: absolute;
+        z-index: 1;
+        opacity: 0;
+        bottom: 4vw;
+        color: white;
+        font-size: 16px;
+        line-height: 2rem;
+    }
+    .sales-btn {
+        position: absolute;
+        height: 40px;
+        width: 180px !important;
+        z-index: 1;
+        opacity: 0;
+    }
+    .sales-info {
+        position: absolute;
+        display:flex;
+        flex-direction: column;
+        width: 18vw;
+        height:1rem;
+    }
+
+
+    .contact-icon-footer {
+        width: 40px;
+        height: 40px;
+        color: gray;
+        margin: 2%;
+        margin-top: 20%;
+
+    }
+    .contact-icon-col {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 20px;
+
+    }
+    .footer-address {
+        text-align: center;
+        margin:auto;
+        color: gray;
+    }
+    .footer-address-container {
+        flex-direction: column;
+    }
+    .blur-bg-footer {
+        -webkit-backdrop-filter: hue-rotate(-100deg) blur(5px) sepia(0.5);
+        backdrop-filter: hue-rotate(-100deg) blur(0px) sepia(0.5);
+        background: linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(66,66,66,0.95) 100%);
+        width: 100%;
+        display: flex;
+        flex-direction: row !important;
+    }
+
+}
+
+@keyframes slideOnStartLeft {
+    0% {
+        transform: translateX(-300%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}

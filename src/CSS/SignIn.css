@@ -1,0 +1,246 @@
+.signin-container a{
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 16px;
+    margin: 0;
+}
+.signup-btn {
+    margin: 15% 0% 5% 0% !important;
+    color: white !important;
+}
+#SignIncontainer col-xs-6 col-md-4
+{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+.signin-image {
+    width: 100%;
+    overflow: hidden;
+    transform: skewY(-7deg);
+    top: -6%;
+    left: 0%;
+}
+.signin-form {
+    margin: auto;
+}
+.signin-image-bg {
+    height: 100%;
+    transform: skewY(7deg);
+    transform-origin: inherit;
+    position: absolute;
+    left: 0%;
+    top: 14%;
+    width: 100%;
+    object-fit: cover;
+}
+#SignIn 
+{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 1);
+    display:flex;
+    box-shadow: rgba(50, 50, 93, 0.35) 0px 50px 100px -20px, rgba(0, 0, 0, 0.4) 0px 30px 60px -30px;
+    overflow: auto;
+    margin: 2rem;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    width: 60em; 
+    height: 40em;
+    backdrop-filter: blur(5px) opacity(0.1);
+    padding: 0;
+}
+#Signup 
+{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 1);
+    display:flex;
+    box-shadow: rgba(50, 50, 93, 0.35) 0px 50px 100px -20px, rgba(0, 0, 0, 0.4) 0px 30px 60px -30px;
+    overflow: auto;
+    margin: 2rem;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    width: 60em; 
+    height: 50em;
+    backdrop-filter: blur(5px) opacity(0.1);
+}
+#title
+{
+    font-size: 30px;
+    font-weight: 600;
+    color: #0f0761;
+    text-align: left;
+}
+.input-field {
+    width: 70%;
+}
+.signup-btn {
+    margin: 5% auto !important;
+    margin-bottom: 2% !important;
+}
+.signin-custom-btn{
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    width: 70%;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 25px;
+    margin: auto;
+}
+
+#forgot, .need-acc-txt {
+    justify-content: center;
+    align-items: center;
+    margin: 5% 0% !important;
+    direction: rtl;
+}
+input { 
+    text-align: right;
+}
+#email-signin, #pass-signin
+{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #bfbfbf;
+    box-sizing: border-box;
+    font-weight: 700;
+    font-size: 24px;
+    transition: .3s ease;
+    -moz-transition: .3s ease;
+    -webkit-transition: .3s ease;
+    -o-transition: .3s ease;
+    -ms-transition: .3s ease;
+    padding-top: 30px;
+    padding-bottom: 5px;
+    background-color:transparent !important;
+
+}
+
+.SignInForm 
+{
+    padding-top: 20%;
+}
+.signin-form {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@media only screen and (min-width: 768px) {
+
+    #SignIncontainer col-xs-6 col-md-4
+    {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10%;
+    }
+    .signin-image {
+        width: 60%;
+        overflow: hidden;
+        transform: skewX(-20deg);
+        right: 15%;
+        top: unset !important;
+        left: unset !important;
+    }
+    .signin-form {
+        margin: auto;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .signin-image-bg {
+        height: 100%;
+        transform: skewX(20deg);
+        transform-origin: inherit;
+        position: absolute;
+        left: -12%;
+        top: unset !important;
+        width: unset !important;
+        object-fit: unset !important;
+    }
+    #SignIn 
+    {
+        text-align: center;
+        background-color: rgba(255, 255, 255, 1);
+        display:flex;
+        box-shadow: rgba(50, 50, 93, 0.35) 0px 50px 100px -20px, rgba(0, 0, 0, 0.4) 0px 30px 60px -30px;
+        overflow: auto;
+        margin: 7rem;
+        border-radius: 13px;
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+        position: relative;
+        width: 60em; 
+        height: 40em;
+        backdrop-filter: blur(5px) opacity(0.1);
+    }
+
+    #title
+    {
+        font-size: 30px;
+        font-weight: 600;
+        color: #0f0761;
+        text-align: left;
+    }
+
+    .signin-custom-btn{
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 400;
+        padding: 8px;
+        border: none;
+        cursor: pointer;
+        width: 70%;
+        margin: auto;
+        border-radius: 25px;
+    }
+
+    #forgot, .need-acc-txt {
+text-align: center;
+    }
+
+    #email-signin, #pass-signin
+    {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #bfbfbf;
+        box-sizing: border-box;
+        font-weight: 700;
+        font-size: 24px;
+        transition: .3s ease;
+        -moz-transition: .3s ease;
+        -webkit-transition: .3s ease;
+        -o-transition: .3s ease;
+        -ms-transition: .3s ease;
+        padding-top: 30px;
+        padding-bottom: 5px;
+        background-color:transparent !important;
+
+    }
+
+    .SignInForm 
+    {
+        padding-top: 20%;
+    }
+}

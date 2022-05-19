@@ -1,0 +1,127 @@
+
+
+
+.logo-img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.contact-container{
+    margin: auto;
+}
+.alert-success {
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.h4{
+    text-align: right !important;
+}
+p{
+    text-align: right !important;
+}
+.navbar-row {
+    width: 100%;
+    background-color: black;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.navbar {
+    width: 100%;
+    background-color: black;
+}
+
+@media all and (min-width: 0px) and (max-width: 800px) {
+    .about-container {
+        padding: 5%;
+        direction: rtl;
+        text-align: right;
+    }
+    .contact-form-container {
+        padding: 2%;
+        direction: rtl;
+        flex-direction: column;
+    }
+    .left-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100% !important;
+    }
+    .divider {
+        height: 100%;
+        border-left: 0px;
+    }
+    
+    .contact-btn {
+        width: 35vw;
+        margin: 1rem;
+    }
+}
+@media all and (min-width:800px) {
+    
+    .contact-btn {
+        width: 12vw;
+        margin: 1rem;
+    }
+    .divider {
+        height: 100%;
+        border-left: 4px solid gray;
+        margin-left: 5%;
+    }
+    .left-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem;
+    }
+    .about-container {
+        padding: 2%;
+        padding-left: 25%;
+        padding-right: 25%;
+        direction: rtl;
+        text-align: right;
+    }
+    .contact-form-container {
+        padding: 2%;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        direction: rtl;
+    }
+}
+.form-label {
+    float: right !important;
+}
+
+.btn-primary {
+    float: right !important;
+}
+
+h1 {
+    color: black;
+}
+
+.contact-title {
+    float: center;
+    text-align: center;
+    width: 100%;
+    padding: 2%;
+}
+
+
+.cont-ttl {
+    direction: rtl;
+    font-size: 20px;
+    font-weight: 400;
+}
+.cont-ttl-red {
+    direction: rtl;
+    font-size: 26px;
+    color:red;
+    text-align: center !important;
+    
+}
