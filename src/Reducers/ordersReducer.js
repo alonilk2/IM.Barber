@@ -2,7 +2,8 @@ import {
   ORDER_SUBMIT,
   ORDER_ERROR,
   ORDERS_FETCHED,
-  ORDERS_FETCH_ERROR
+  ORDERS_FETCH_ERROR,
+
 } from '../Constants/generalConstants'
 
 export default function ordersReducer (state = {}, action) {
@@ -30,6 +31,7 @@ export default function ordersReducer (state = {}, action) {
         error: action.payload
       }
     }
+
     default:
       return state
   }

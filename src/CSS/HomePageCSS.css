@@ -238,9 +238,9 @@ video {
 
 .abdev {
   width: 100% !important;
-  margin: unset !important;
+  margin: 1% !important;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   height: fit-content;
 }
 

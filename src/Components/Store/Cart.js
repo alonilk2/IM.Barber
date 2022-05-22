@@ -1,121 +1,138 @@
-import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import Form from 'react-bootstrap/Form'
-import useUser from '../../Hooks/useUser'
-import useCart from '../../Hooks/useCart'
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import useUser from "../../Hooks/useUser";
+import useCart from "../../Hooks/useCart";
 import {
   SHIPPING_PRICE,
-  SERVER_ADDRESS
-} from '../../Constants/generalConstants'
+  SERVER_ADDRESS,
+} from "../../Constants/generalConstants";
+import TextField from "@mui/material/TextField";
 
-const QuantitiesArray = Array.from({ length: 8 }, (_, i) => i + 1)
+const QuantitiesArray = Array.from({ length: 8 }, (_, i) => i + 1);
 
-export default function Cart (props) {
-  const history = useHistory()
-  const user = useUser()
-  const [
-    cartObject,
-    count,
-    totalSum,
-    addToCart,
-    deleteFromCart,
-    changeQuantity
-  ] = useCart()
-  const [quantities, setQuantities] = useState(Array(8).fill(1))
+export default function Cart(props) {
+  const [quantities, setQuantities] = useState(Array(8).fill(1));
+  const [coupon, setCoupon] = useState();
+  const history = useHistory();
+  const user = useUser();
+  const cartObject = useCart();
 
-  function handleChangeQuantity (e, index, item) {
+  function handleChangeQuantity(e, index, item) {
     let quantityArr = [...quantities],
-      value = parseInt(e.target.value)
-    if (quantityArr && quantityArr[index]) quantityArr[index] = parseInt(value)
-    let currentTotalSum = changeQuantity(item, value)
-    setQuantities(quantityArr)
+      value = parseInt(e.target.value);
+    if (quantityArr && quantityArr[index]) quantityArr[index] = parseInt(value);
+    cartObject.changeQuantity(item, value);
+    setQuantities(quantityArr);
   }
 
-  function handleDelete (e, item) {
-    e.preventDefault()
-    deleteFromCart(item)
+  function handleDelete(e, item) {
+    e.preventDefault();
+    cartObject.deleteFromCart(item);
   }
 
   const handleSubmitOrder = () => {
+    cartObject.signCoupon(coupon);
+    console.log(cartObject);
     if (user) {
-      history.push('/delivery', {
-        cart: cartObject ? cartObject : null,
-        totalSum: totalSum
-      })
-    } else {
-      history.push('/signin', {
-        cartFlag: true,
-        cart: cartObject, //for auto redirect after signin
-        totalSum: totalSum
-      })
+      return history.push("/delivery", {
+        cart: cartObject.cart,
+        discount: cartObject.discount,
+        totalDiscount: cartObject.totalDiscount,
+        totalSum: cartObject.totalSum,
+      });
     }
-  }
+    history.push("/signin", {
+      cartFlag: true, //for auto redirect back to cart after signin
+      cart: cartObject.cart,
+      discount: cartObject.discount,
+      totalDiscount: cartObject.totalDiscount,
+      totalSum: cartObject.totalSum,
+    });
+  };
 
-  const ItemsRowMapper = cartObject.map((item, index) => {
+  const ItemsRowMapper = cartObject.cart.map((item, index) => {
     return (
-      <div className='item'>
-        <div className='title-column'>
+      <div className="item">
+        <div className="title-column">
           <img
-            src={SERVER_ADDRESS + '/uploads/' + item.imgname}
+            src={SERVER_ADDRESS + "/uploads/" + item.imgname}
             alt={item.producttitle}
-            width='100px'
+            width="100px"
           ></img>
-          <p className='title'>{item.producttitle}</p>
+          <p className="title">{item.producttitle}</p>
         </div>
 
-        <div className='price-column'>
-          <h5 className='price'>₪{item.price.toFixed(2)}</h5>
+        <div className="price-column">
+          <h5 className="price">₪{item.price.toFixed(2)}</h5>
           <Form.Select
-            aria-label='Default select example'
+            aria-label="Default select example"
             value={item.quantity}
-            onChange={e => handleChangeQuantity(e, index, item)}
+            onChange={(e) => handleChangeQuantity(e, index, item)}
           >
-            {QuantitiesArray.map(item => {
+            {QuantitiesArray.map((item) => {
               return (
                 <option value={item} key={item}>
                   {item}
                 </option>
-              )
+              );
             })}
           </Form.Select>
-          <button className='edit' onClick={e => handleDelete(e, item)}>
+          <button className="edit" onClick={(e) => handleDelete(e, item)}>
             מחיקה
           </button>
         </div>
       </div>
-    )
-  })
+    );
+  });
+
+  const handleCoupon = (e) => {
+    setCoupon(e.target.value);
+  };
 
   return (
-    <div className='cart-container'>
-      <h3 className='title'>סל הקניות שלך</h3>
-      <div className='box-row'>
-        <div className='list-box'>
+    <div className="cart-container">
+      <h3 className="title">סל הקניות שלך</h3>
+      <div className="box-row">
+        <div className="list-box">
           {ItemsRowMapper.length > 0 ? (
             ItemsRowMapper
           ) : (
-            <h4 className='empty-title'> הסל שלך ריק </h4>
+            <h4 className="empty-title"> הסל שלך ריק </h4>
           )}
         </div>
-        <div className='summery-box'>
-          <h4 className='title'>סיכום הזמנה</h4>
-          <div className='spaced-line'>
+        <div className="summery-box">
+          <h4 className="title">סיכום הזמנה</h4>
+          <div className="spaced-line">
             <p>עלות המוצרים: </p>
-            <p>₪{(totalSum - SHIPPING_PRICE).toFixed(2)}</p>
+            <p>₪{(cartObject.totalSum - SHIPPING_PRICE).toFixed(2)}</p>
           </div>
-          <div className='spaced-line'>
+          {cartObject.discount > 0 && (
+            <div className="spaced-line">
+              <p>הנחת קופון ({cartObject.discount}%):</p>
+              <p>₪{cartObject.totalDiscount}</p>
+            </div>
+          )}
+          <div className="spaced-line">
             <p>עלות המשלוח: </p>
             <p>₪{SHIPPING_PRICE}</p>
           </div>
-          <div className='spaced-line sum'>
+
+          <div className="spaced-line sum">
             <p>סה"כ לתשלום: </p>
-            <h2>₪{totalSum.toFixed(2)}</h2>
+            <h2>₪{cartObject.totalSum.toFixed(2)}</h2>
           </div>
-          <button className='buy-btn' onClick={() => handleSubmitOrder()}>
+          <TextField
+            id="outlined-basic"
+            label="יש לך קוד קופון?"
+            variant="outlined"
+            onChange={handleCoupon}
+          />
+          <button className="buy-btn" onClick={() => handleSubmitOrder()}>
             בצע הזמנה
           </button>
         </div>
       </div>
     </div>
-  )
+  );
 }

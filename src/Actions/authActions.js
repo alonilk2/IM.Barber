@@ -10,10 +10,9 @@ import {
   USER_SIGNOUT_SUCCESS
 } from '../Constants/userConst'
 import { SERVER_ADDRESS } from '../Constants/generalConstants'
-import { Redirect, Route } from 'react-router'
 import { history } from '../history'
 
-function signin (email, password, cartFlag, cart, totalSum, admin) {
+function signin (email, password, cartObject, admin) {
   return dispatch => {
     dispatch({ type: USER_SIGNIN_ATTEMPT, payload: {} })
     Axios.post(SERVER_ADDRESS + '/signin', {
@@ -24,10 +23,12 @@ function signin (email, password, cartFlag, cart, totalSum, admin) {
         if (response.data.success === true) {
           dispatch({ type: USER_SIGNIN_SUCCESS, payload: response })
           Cookie.set('userInstance', JSON.stringify(response))
-          if (cartFlag === true)
+          if (cartObject.cartFlag === true)
             history.push('/delivery', {
-              cart: cart,
-              totalSum: totalSum
+              cart: cartObject.cart,
+              discount: cartObject.discount,
+              totalDiscount: cartObject.totalDiscount,
+              totalSum: cartObject.totalSum,
             })
           else {
             if (admin) history.push('/admin')

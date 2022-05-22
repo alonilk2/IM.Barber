@@ -1,17 +1,14 @@
-var router = require('express').Router(),
-  bodyParser = require('body-parser'),
-  multer = require('multer'),
-  path = require('path'),
-  fs = require('fs'),
-  MailMessages = require('../../MailMessages')
+var router = require("express").Router(),
+  bodyParser = require("body-parser"),
+  MailMessages = require("../../MailMessages");
 
-const db = require('../../models/index.js')
-const { transporter } = require('../../config/NodeMailerTransporter.js')
+const db = require("../../models/index.js");
+const { transporter } = require("../../config/NodeMailerTransporter.js");
 
-router.use(bodyParser.urlencoded({ extended: false }))
-router.use(bodyParser.json())
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json());
 
-router.post('/postorder', async (req, res) => {
+router.post("/postorder", async (req, res) => {
   try {
     const result = await db.orders.create(
       {
@@ -21,89 +18,86 @@ router.post('/postorder', async (req, res) => {
         paymentid: req.body.paymentid,
         address: req.body.address,
         phone: req.body.phone,
-        shipped: false
+        shipped: false,
       },
-      { returning: ['id', 'email', 'cart', 'price', 'address'] }
-    )
-    transporter.sendMail(
-      MailMessages.NewOrder(result),
-      function (error, info) {
-        if (error) {
-          res.json({
-            error: error,
-            status: 1
-          })
-        } else {
-          res.json({
-            success: true,
-            message: info,
-            user: user
-          })
-        }
+      { returning: ["id", "email", "cart", "price", "address"] }
+    );
+    transporter.sendMail(MailMessages.NewOrder(result), function (error, info) {
+      if (error) {
+        res.json({
+          error: error,
+          status: 1,
+        });
+      } else {
+        res.json({
+          success: true,
+          message: info,
+          user: user,
+        });
       }
-    )
+    });
     res.json({
       success: true,
-      result: result
-    })
+      result: result,
+    });
   } catch (err) {
-    res.json({ success: false, error: err })
+    res.json({ success: false, error: err });
   }
-})
+});
 
-router.post('/getordersperuser', async (req, res) => {
-  console.log(req.body)
+router.post("/getordersperuser", async (req, res) => {
+  console.log(req.body);
   try {
     const result = await db.orders.findAll({
       where: {
-        email: req.body.email
-      }
-    })
+        email: req.body.email,
+      },
+    });
     res.json({
       success: true,
-      result: result
-    })
+      result: result,
+    });
   } catch (err) {
-    console.log(err)
-    res.json({ success: false, error: err })
+    console.log(err);
+    res.json({ success: false, error: err });
   }
-})
+});
 
-router.get('/getallorders', async (req, res) => {
+router.get("/getallorders", async (req, res) => {
   try {
     const result = await db.orders.findAll({
-      include: [{ model: db.users, as: 'owner' }]
-    })
-    console.log(result)
+      include: [{ model: db.users, as: "owner" }],
+    });
+    console.log(result);
     res.json({
       success: true,
-      result: result
-    })
+      result: result,
+    });
   } catch (err) {
-    console.log(err)
-    res.json({ success: false, error: err })
+    console.log(err);
+    res.json({ success: false, error: err });
   }
-})
-router.post('/shiporder', async (req, res) => {
+});
+router.post("/shiporder", async (req, res) => {
   try {
     const result = await db.orders.update(
       {
-        shipped: true
+        shipped: true,
       },
       {
         where: {
-          id: req.body.order
-        }
+          id: req.body.order,
+        },
       }
-    )
-    console.log(result)
+    );
+    console.log(result);
     res.json({
       success: true,
-      result: result
-    })
+      result: result,
+    });
   } catch (err) {
-    console.log(err)
-    res.json({ success: false, error: err })
+    console.log(err);
+    res.json({ success: false, error: err });
   }
-})
-module.exports = router
+});
+module.exports = router;

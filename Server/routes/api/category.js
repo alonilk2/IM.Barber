@@ -1,7 +1,6 @@
 var router = require('express').Router(),
-  multer = require('multer'),
-  path = require('path'),
-  fs = require('fs')
+  multer = require('multer')
+
 
 const uploadpath = 'categories'
 

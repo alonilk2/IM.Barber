@@ -13,9 +13,12 @@ export const HIDE_PRODUCT = 'HIDE_PRODUCT'
 export const DISPLAY_CONTACT = 'DISPLAY_CONTACT'
 
 export const FILTER_RESULTS = 'FILTER_RESULTS'
+export const COUPON_TRUE = 'COUPON_TRUE'
+export const COUPON_FALSE = 'COUPON_FALSE'
+
 export const SHIPPING_PRICE = 20
-export const SERVER_ADDRESS = 'https://www.imbarber.com'
-// export const SERVER_ADDRESS = 'http://localhost:8080';
+// export const SERVER_ADDRESS = 'https://www.imbarber.com'
+export const SERVER_ADDRESS = 'http://localhost:8080';
 
 export const initialOptions = {
   'client-id':

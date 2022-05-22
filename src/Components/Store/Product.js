@@ -33,20 +33,19 @@ function Product(props) {
   const [imageArr, setImageArr] = useState([]);
   const [product, setProduct] = useState();
   const [productsList, setProductsList] = useState([]);
-  const [cart, count, totalSum, addToCart, changeQuantity] = useCart();
+  const cartObject = useCart();
+  const _product = useProducts({ product: props.pid });
+  const _productsList = useProducts({ allProducts: true });
   const dispatch = useDispatch();
   const history = useHistory();
-  const _product = useProducts({ product: props.pid });
-  const _productsList = useProducts({allProducts: true});
   const size = useWindowSize();
   var counter = 0;
 
   useEffect(() => {
-    if(_product) setProduct(_product[0]);
+    if (_product) setProduct(_product[0]);
   }, [_product]);
 
   useEffect(() => {
-    console.log(_productsList)
     setProductsList(_productsList[0]);
   }, [_productsList]);
 
@@ -65,7 +64,7 @@ function Product(props) {
 
   const addCartItem = (e, product, now = false) => {
     e.preventDefault();
-    addToCart(product);
+    cartObject.addToCart(product);
     if (now) history.push("/cart");
     else dispatch({ type: SHOW_ADD_CART });
   };
@@ -176,7 +175,11 @@ function Product(props) {
 
       <div className="product">
         <AddToCartAnimation />
-        <StoreHeader cart={cart} count={count} totalSum={totalSum} />
+        <StoreHeader
+          cart={cartObject.cart}
+          count={cartObject.count}
+          totalSum={cartObject.totalSum}
+        />
         <div className="col product-img-container">
           {product ? (
             <Carousel variant="dark">{imageMapper}</Carousel>
