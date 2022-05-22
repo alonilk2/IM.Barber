@@ -117,7 +117,6 @@ export default function Cart(props) {
             <p>עלות המשלוח: </p>
             <p>₪{SHIPPING_PRICE}</p>
           </div>
-
           <div className="spaced-line sum">
             <p>סה"כ לתשלום: </p>
             <h2>₪{cartObject.totalSum.toFixed(2)}</h2>

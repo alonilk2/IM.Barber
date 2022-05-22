@@ -364,8 +364,19 @@ a:hover { color: #0066bf; text-decoration: none;} /* CSS link hover (green) */
     align-items: flex-start;
     text-align: right;
     direction: rtl;
-    padding: 5% 15% 3% 15%;
+    padding: 0 15% 3% 15%;
     width: 100%;
+}
+.btn-primary {
+    background-color: rgba(224, 194, 119, 1) !important;
+    color: black !important;
+    border-radius: 15px !important;
+    border-color: rgb(182, 156, 90) !important;
+    padding: 1.5% 5%  !important;
+    margin: 2%;
+}
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+    background-color: rgba(255, 255, 255, 0.80) !important;
 }
 .empty-title {
     position: absolute;

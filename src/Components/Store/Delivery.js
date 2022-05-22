@@ -68,6 +68,8 @@ export default function Delivery() {
   if (!storage) return <Redirect to={"/store"} />;
   return (
     <div className="cart-container">
+      <h3 className="title">פרטי משלוח ותשלום</h3>
+
       <div className="box-row">
         <div className="list-box">
           <h3 className="title">פרטי משלוח</h3>
@@ -173,7 +175,6 @@ export default function Delivery() {
             <PayPalButtons
               style={style}
               forceReRender={[cartObject.totalSum, currency, style]}
-              fundingSource={undefined}
               createOrder={(data, actions) => {
                 return actions.order
                   .create({
@@ -204,7 +205,7 @@ export default function Delivery() {
                 console.log(data);
               }}
             />
-          ) : null}
+          ) : <h5 style={{marginTop: '30%'}}>יש להזין קודם פרטי משלוח</h5>}
         </div>
         <div className="summery-box">
           <h4 className="title">סיכום הזמנה</h4>

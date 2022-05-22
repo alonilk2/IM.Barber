@@ -9,8 +9,7 @@ function CartView (props) {
   return (
     <div>
       <MenuComponent />
-      <div style={{ margin: '5%' }}></div>
-
+      <div style={{ margin: '2%' }}></div>
       <Breadcrumb
         PageArr={[
           { name: 'דף הבית', url: '/' },
