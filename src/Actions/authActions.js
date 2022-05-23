@@ -41,17 +41,15 @@ function signin(email, password, cartObject, admin) {
   };
 
   function RouteAfterSuccess() {
-    if (cartObject.cartFlag === true)
-      history.push("/delivery", {
+    if (cartObject?.cartFlag === true)
+      return history.push("/delivery", {
         cart: cartObject.cart,
         discount: cartObject.discount,
         totalDiscount: cartObject.totalDiscount,
         totalSum: cartObject.totalSum,
       });
-    else {
-      if (admin) history.push("/admin");
-      else history.push("/store");
-    }
+    else if (admin) return history.push("/admin");
+    return history.push("/store");
   }
 }
 
