@@ -7,7 +7,7 @@ export default function AboutSection(props) {
         <h1 className="secondary-title">מי אנחנו</h1>
         {props.size.width > 800 ? (
           <p className="secondary-paragraph">
-            אנחנו מתמקצעים בתחום ה-Barber, כל שיטות הדירוג, הגזירות והטכניקות
+            אנחנו מתמחים בתחום ה-Barber, כל שיטות הדירוג, הגזירות והטכניקות
             המתקדמות בארץ ובעולם.
             <br />
             באתר שלנו תוכלו לקבוע תור לתספורות, עיצובי זקן או כל דבר אחר שתרצו.
