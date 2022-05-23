@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import animationData from '../../Lotties/animatedTick'
@@ -15,13 +15,13 @@ const defaultOptions = {
 }
 
 export default function SuccessOrder() {
-  const [cartObject, count, totalSum, addToCart, changeQuantity, resetCart] = useCart()
+  const cartObject = useCart()
   const orderState = useSelector(state => state.orders)
   const history = useHistory()
 
   useEffect(() => {
-    resetCart()
-  }, [resetCart])
+    cartObject.resetCart()
+  }, [])
 
   if (orderState?.length > 0) {
     return (

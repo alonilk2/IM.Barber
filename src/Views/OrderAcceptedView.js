@@ -1,10 +1,10 @@
 import React from 'react'
 import '../CSS/HomePageCSS.css'
-import SuccessOrder from '../Components/Store/SuccessOrder'
+import OrderAccepted from '../Components/Store/OrderAccepted'
 import MenuComponent from '../Components/MenuComponent'
 import Footer from '../Components/Footer'
 import Breadcrumb from '../Components/Breadcrumb'
-function SuccessOrderView (props) {
+function OrderAcceptedView (props) {
   return (
     <>
       <MenuComponent />
@@ -12,9 +12,9 @@ function SuccessOrderView (props) {
         {name: "דף הבית", url: "/"},
         {name: "חנות המוצרים", url: "/store"},
       ]} />
-      <SuccessOrder />
+      <OrderAccepted />
       <Footer />
     </>
   )
 }
-export default SuccessOrderView
+export default OrderAcceptedView

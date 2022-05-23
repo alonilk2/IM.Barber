@@ -9,7 +9,7 @@ import Signup from './Views/Signup'
 import Cart from './Views/CartView'
 import Delivery from './Views/DeliveryView'
 import Profile from './Views/ProfileView'
-import SuccessOrder from './Views/SuccessOrderView'
+import OrderAccepted from './Views/OrderAcceptedView'
 import Academy from './Views/AcademyView'
 import ApproveView from './Views/ApproveView'
 import ChangePassView from './Views/ChangePassView'
@@ -36,7 +36,7 @@ ReactDOM.render(
             <Route path='/admin' component={AdminView} />
             <Route path='/delivery' component={Delivery} />
             <Route path='/cart' component={Cart} />
-            <Route path='/store/SuccessOrder' component={SuccessOrder} />
+            <Route path='/store/SuccessOrder' component={OrderAccepted} />
             <Route path='/store' component={Store} />
             <Route path='/Signin' component={Signin} />
             <Route path='/signup' component={Signup} />

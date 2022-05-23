@@ -33,7 +33,6 @@ export default function Cart(props) {
 
   const handleSubmitOrder = () => {
     cartObject.signCoupon(coupon);
-    console.log(cartObject);
     if (user) {
       return history.push("/delivery", {
         cart: cartObject.cart,

@@ -1,7 +1,7 @@
-import '../../CSS/HomePageCSS.css'
-import '../../CSS/Store.css'
-import useWindowSize from '../../Hooks/useWindowSize'
-import useCategories from '../../Hooks/useCategories'
+import '../../../CSS/HomePageCSS.css'
+import '../../../CSS/Store.css'
+import useWindowSize from '../../../Hooks/useWindowSize'
+import useCategories from '../../../Hooks/useCategories'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
 export default function CategoryBar () {

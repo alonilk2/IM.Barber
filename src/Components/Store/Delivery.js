@@ -58,9 +58,7 @@ export default function Delivery() {
       if (FirstName && LastName && Phone && City && Street && House && Zip)
         setValidated(true);
       setSaved(true);
-    } else {
-      alert("מספר הפלאפון שהוזן אינו תקין. יש להקליד מספר בן 10 ספרות");
-    }
+    } else alert("מספר הפלאפון שהוזן אינו תקין. יש להקליד מספר בן 10 ספרות");
   };
 
   let storage = localStorage.getItem("cart");
@@ -71,142 +69,8 @@ export default function Delivery() {
       <h3 className="title">פרטי משלוח ותשלום</h3>
 
       <div className="box-row">
-        <div className="list-box">
-          <h3 className="title">פרטי משלוח</h3>
-          <Form noValidate validated={validated}>
-            <Row className="mb-3">
-              <Form.Group as={Col} md="6" controlId="validationCustom01">
-                <Form.Label>שם פרטי</Form.Label>
-                <Form.Control
-                  required
-                  type="text"
-                  placeholder="שם פרטי"
-                  onChange={(e) => setFirstName(e.target.value)}
-                />
-                <Form.Control.Feedback type="invalid">
-                  יש להזין שם פרטי
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} md="6" controlId="validationCustom02">
-                <Form.Label>שם משפחה</Form.Label>
-                <Form.Control
-                  required
-                  type="text"
-                  placeholder="שם משפחה"
-                  onChange={(e) => setLastName(e.target.value)}
-                />
-                <Form.Control.Feedback type="invalid">
-                  יש להזין שם משפחה
-                </Form.Control.Feedback>
-              </Form.Group>
-            </Row>
-            <Row className="mb-3">
-              <Form.Group as={Col} md="6" controlId="validationCustom03">
-                <Form.Label>עיר</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="עיר"
-                  required
-                  onChange={(e) => setCity(e.target.value)}
-                />
-                <Form.Control.Feedback type="invalid">
-                  יש להזין עיר
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} md="6" controlId="validationCustom03">
-                <Form.Label>רחוב</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="רחוב"
-                  required
-                  onChange={(e) => setStreet(e.target.value)}
-                />
-                <Form.Control.Feedback type="invalid">
-                  יש להזין רחוב
-                </Form.Control.Feedback>
-              </Form.Group>
-            </Row>
-            <Row className="mb-3">
-              <Form.Group as={Col} md="6" controlId="validationCustom05">
-                <Form.Label>מספר בית</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="מספר בית"
-                  onChange={(e) => setHouse(e.target.value)}
-                  required
-                />
-                <Form.Control.Feedback type="invalid">
-                  יש להזין מספר בית
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} md="6" controlId="validationCustom05">
-                <Form.Label>מיקוד</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="מיקוד"
-                  onChange={(e) => setZip(e.target.value)}
-                  required
-                />
-                <Form.Control.Feedback type="invalid">
-                  יש להזין מיקוד
-                </Form.Control.Feedback>
-              </Form.Group>
-            </Row>
-            <Row className="mb-3">
-              <Form.Group as={Col} md="12" controlId="validationCustom05">
-                <Form.Label>מספר טלפון</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="מספר טלפון"
-                  onChange={(e) => setPhone(e.target.value)}
-                  required
-                />
-                <Form.Control.Feedback type="invalid">
-                  יש להזין מספר טלפון
-                </Form.Control.Feedback>
-              </Form.Group>
-            </Row>
-            <Button onClick={handleSaveDelivery}>שמירה</Button>
-          </Form>
-        </div>
-        <div className="list-box">
-          <h3 className="title">פרטי תשלום</h3>
-          {saved ? (
-            <PayPalButtons
-              style={style}
-              forceReRender={[cartObject.totalSum, currency, style]}
-              createOrder={(data, actions) => {
-                return actions.order
-                  .create({
-                    purchase_units: [
-                      {
-                        amount: {
-                          currency_code: currency,
-                          value: cartObject.totalSum.toFixed(2),
-                        },
-                      },
-                    ],
-                    application_context: {
-                      shipping_preference: "NO_SHIPPING",
-                    },
-                  })
-                  .then((orderId) => {
-                    setOrderId(orderId);
-                    return orderId;
-                  });
-              }}
-              onApprove={function (data, actions) {
-                return actions.order.capture().then(function () {
-                  handleSubmit();
-                });
-              }}
-              onError={function (data) {
-                console.log("error");
-                console.log(data);
-              }}
-            />
-          ) : <h5 style={{marginTop: '30%'}}>יש להזין קודם פרטי משלוח</h5>}
-        </div>
+        {AddressBox()}
+        {PaymentBox()}
         <div className="summery-box">
           <h4 className="title">סיכום הזמנה</h4>
           <div className="spaced-line">
@@ -232,4 +96,152 @@ export default function Delivery() {
       </div>
     </div>
   );
+
+  function PaymentBox() {
+    return (
+      <div className="list-box">
+        <h3 className="title">פרטי תשלום</h3>
+        {saved ? (
+          <PayPalButtons
+            style={style}
+            forceReRender={[cartObject.totalSum, currency, style]}
+            createOrder={(data, actions) => {
+              return actions.order
+                .create({
+                  purchase_units: [
+                    {
+                      amount: {
+                        currency_code: currency,
+                        value: cartObject.totalSum.toFixed(2),
+                      },
+                    },
+                  ],
+                  application_context: {
+                    shipping_preference: "NO_SHIPPING",
+                  },
+                })
+                .then((orderId) => {
+                  setOrderId(orderId);
+                  return orderId;
+                });
+            }}
+            onApprove={function (data, actions) {
+              return actions.order.capture().then(function () {
+                handleSubmit();
+              });
+            }}
+            onError={function (data) {
+              console.log("error");
+              console.log(data);
+            }}
+          />
+        ) : (
+          <h5 style={{ marginTop: "30%" }}>יש להזין קודם פרטי משלוח</h5>
+        )}
+      </div>
+    );
+  }
+
+  function AddressBox() {
+    return (
+      <div className="list-box">
+        <h3 className="title">פרטי משלוח</h3>
+        <Form noValidate validated={validated}>
+          <Row className="mb-3">
+            <Form.Group as={Col} md="6" controlId="validationCustom01">
+              <Form.Label>שם פרטי</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="שם פרטי"
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+              <Form.Control.Feedback type="invalid">
+                יש להזין שם פרטי
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md="6" controlId="validationCustom02">
+              <Form.Label>שם משפחה</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="שם משפחה"
+                onChange={(e) => setLastName(e.target.value)}
+              />
+              <Form.Control.Feedback type="invalid">
+                יש להזין שם משפחה
+              </Form.Control.Feedback>
+            </Form.Group>
+          </Row>
+          <Row className="mb-3">
+            <Form.Group as={Col} md="6" controlId="validationCustom03">
+              <Form.Label>עיר</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="עיר"
+                required
+                onChange={(e) => setCity(e.target.value)}
+              />
+              <Form.Control.Feedback type="invalid">
+                יש להזין עיר
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md="6" controlId="validationCustom03">
+              <Form.Label>רחוב</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="רחוב"
+                required
+                onChange={(e) => setStreet(e.target.value)}
+              />
+              <Form.Control.Feedback type="invalid">
+                יש להזין רחוב
+              </Form.Control.Feedback>
+            </Form.Group>
+          </Row>
+          <Row className="mb-3">
+            <Form.Group as={Col} md="6" controlId="validationCustom05">
+              <Form.Label>מספר בית</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="מספר בית"
+                onChange={(e) => setHouse(e.target.value)}
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+                יש להזין מספר בית
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md="6" controlId="validationCustom05">
+              <Form.Label>מיקוד</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="מיקוד"
+                onChange={(e) => setZip(e.target.value)}
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+                יש להזין מיקוד
+              </Form.Control.Feedback>
+            </Form.Group>
+          </Row>
+          <Row className="mb-3">
+            <Form.Group as={Col} md="12" controlId="validationCustom05">
+              <Form.Label>מספר טלפון</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="מספר טלפון"
+                onChange={(e) => setPhone(e.target.value)}
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+                יש להזין מספר טלפון
+              </Form.Control.Feedback>
+            </Form.Group>
+          </Row>
+          <Button onClick={handleSaveDelivery}>שמירה</Button>
+        </Form>
+      </div>
+    );
+  }
 }

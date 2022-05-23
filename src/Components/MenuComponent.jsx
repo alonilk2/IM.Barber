@@ -9,7 +9,7 @@ import Logo from '../Images/logo.svg'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import Container from 'react-bootstrap/Container'
 import useWindowSize from '../Hooks/useWindowSize'
-import CategoryBar from './Store/CategoryBar'
+import CategoryBar from './Store/Header/CategoryBar'
 import { SocialIcon } from 'react-social-icons'
 
 const sleep = milliseconds => {

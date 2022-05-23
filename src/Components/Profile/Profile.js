@@ -6,10 +6,7 @@ import Table from 'react-bootstrap/Table'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { FetchOrdersPerUser } from '../../Actions/ordersActions'
-import {
-  SERVER_ADDRESS,
-  SHIPPING_PRICE
-} from '../../Constants/generalConstants'
+import { SERVER_ADDRESS, SHIPPING_PRICE } from '../../Constants/generalConstants'
 import { signout, updatePass } from '../../Actions/authActions'
 import { deepOrange } from '@mui/material/colors'
 import { format } from 'date-fns'
@@ -88,9 +85,9 @@ function Profile (props) {
       })
     } else return null
   }
+  
   const addressParser = () => {
     let address = JSON.parse(showOrder?.address)
-
     return (
       <p>
         רחוב:{address.street}, בית: {address.house}, עיר: {address.city}, מיקוד:
@@ -126,126 +123,131 @@ function Profile (props) {
           </button>
         </div>
         <Accordion>
-          <Accordion.Item eventKey={0}>
-            <Accordion.Header>הזמנות קודמות</Accordion.Header>
-            <Accordion.Body style={{ padding: 0 }}>
-              {showOrder ? (
-                <div className='order-desc'>
-                  <p className='order-body'>
-                    מספר הזמנה: {showOrder.id}
-                    <br />
-                    תאריך הזמנה:{' '}
-                    {format(new Date(showOrder.createdAt), 'dd/MM/yyyy')}
-                    <br />
-                    סטאטוס הזמנה:{' '}
-                    {showOrder.shipped ? 'הזמנה הושלמה' : 'הזמנה ממתינה למשלוח'}
-                    <br />
-                    כתובת למשלוח: {addressParser()}
-                    <br />
-                    פירוט הזמנה:
-                  </p>
-                  <div style={{ margin: 'auto', width: '70%' }}>
-                    <Table striped bordered hover size='sm'>
-                      <thead>
-                        <tr>
-                          <th>תמונה להמחשה</th>
-                          <th>שם המוצר</th>
-                          <th>עלות המוצר</th>
-                          <th>כמות</th>
-                          <th>סה"כ</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {ItemsRowMapper(JSON.parse(showOrder.cart))}
-                      </tbody>
-                    </Table>
-                    <div className='total'>
-                      <h5> משלוח: ₪{SHIPPING_PRICE}</h5>
-                      <h5> סה"כ כולל מע"מ: ₪{showOrder.price}</h5>
-                    </div>
-                  </div>
-
-                  <button
-                    class='upbtn'
-                    style={{
-                      backgroundColor: 'lightgray',
-                      width: '130px',
-                      height: '50px',
-                      padding: 0
-                    }}
-                    onClick={() => {
-                      setShowOrder(null)
-                    }}
-                  >
-                    חזרה
-                  </button>
-                </div>
-              ) : (
-                <div className='row past-orders-container'>
-                  <div className='rightcol' style={{ padding: 0 }}>
-                    <Table striped bordered hover size='sm'>
-                      <thead>
-                        <tr>
-                          <th>מספר הזמנה</th>
-                          <th>תאריך הזמנה</th>
-                          <th>עלות כוללת</th>
-                          <th>סטטוס הזמנה</th>
-                          <th>פירוט</th>
-                        </tr>
-                      </thead>
-                      <tbody>{ordersMapper()}</tbody>
-                    </Table>
-                  </div>
-                </div>
-              )}
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey={1}>
-            <Accordion.Header>ניהול פרטים</Accordion.Header>
-            <Accordion.Body>
-              <Row className='details-container'>
-                <Col className='title-col'>
-                  <p> שינוי סיסמה:</p>
-                </Col>
-                <Col>
-                  <Row>
-                    <input
-                      type='password'
-                      className='input-pass'
-                      placeholder='סיסמה ישנה'
-                      onChange={e => setOldPass(e.target.value)}
-                    ></input>
-                  </Row>
-                  <Row>
-                    <input
-                      type='password'
-                      className='input-pass'
-                      placeholder='סיסמה חדשה'
-                      onChange={e => setNewPass(e.target.value)}
-                    ></input>
-                  </Row>
-                  <Row>
-                    <input
-                      type='password'
-                      className='input-pass'
-                      placeholder='שוב סיסמה חדשה'
-                      onChange={e => setNewPass1(e.target.value)}
-                    ></input>
-                  </Row>
-                  <button
-                    type='button'
-                    class='order-btn'
-                    onClick={handleChangePass}
-                  >
-                    שינוי סיסמה
-                  </button>
-                </Col>
-              </Row>
-            </Accordion.Body>
-          </Accordion.Item>
+          {OrdersSection()}
+          {ManageSection()}
         </Accordion>
       </div>
     </div>
   )
+
+  function ManageSection() {
+    return <Accordion.Item eventKey={1}>
+      <Accordion.Header>ניהול פרטים</Accordion.Header>
+      <Accordion.Body>
+        <Row className='details-container'>
+          <Col className='title-col'>
+            <p> שינוי סיסמה:</p>
+          </Col>
+          <Col>
+            <Row>
+              <input
+                type='password'
+                className='input-pass'
+                placeholder='סיסמה ישנה'
+                onChange={e => setOldPass(e.target.value)}
+              ></input>
+            </Row>
+            <Row>
+              <input
+                type='password'
+                className='input-pass'
+                placeholder='סיסמה חדשה'
+                onChange={e => setNewPass(e.target.value)}
+              ></input>
+            </Row>
+            <Row>
+              <input
+                type='password'
+                className='input-pass'
+                placeholder='שוב סיסמה חדשה'
+                onChange={e => setNewPass1(e.target.value)}
+              ></input>
+            </Row>
+            <button
+              type='button'
+              class='order-btn'
+              onClick={handleChangePass}
+            >
+              שינוי סיסמה
+            </button>
+          </Col>
+        </Row>
+      </Accordion.Body>
+    </Accordion.Item>
+  }
+
+  const handleBack = () => {
+    setShowOrder(null)
+  }
+
+  function OrdersSection() {
+    return <Accordion.Item eventKey={0}>
+      <Accordion.Header>הזמנות קודמות</Accordion.Header>
+      <Accordion.Body style={{ padding: 0 }}>
+        {showOrder ? (
+          <div className='order-desc'>
+            <p className='order-body'>
+              מספר הזמנה: {showOrder.id}
+              <br />
+              תאריך הזמנה:{' '}
+              {format(new Date(showOrder.createdAt), 'dd/MM/yyyy')}
+              <br />
+              סטאטוס הזמנה:{' '}
+              {showOrder.shipped ? 'הזמנה הושלמה' : 'הזמנה ממתינה למשלוח'}
+              <br />
+              כתובת למשלוח: {addressParser()}
+              <br />
+              פירוט הזמנה:
+            </p>
+            <div style={{ margin: 'auto', width: '70%' }}>
+              <Table striped bordered hover size='sm'>
+                <thead>
+                  <tr>
+                    <th>תמונה להמחשה</th>
+                    <th>שם המוצר</th>
+                    <th>עלות המוצר</th>
+                    <th>כמות</th>
+                    <th>סה"כ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ItemsRowMapper(JSON.parse(showOrder.cart))}
+                </tbody>
+              </Table>
+              <div className='total'>
+                <h5> משלוח: ₪{SHIPPING_PRICE}</h5>
+                <h5> סה"כ כולל מע"מ: ₪{showOrder.price}</h5>
+              </div>
+            </div>
+
+            <button
+              class='upbtn back'
+
+              onClick={handleBack}
+            >
+              חזרה
+            </button>
+          </div>
+        ) : (
+          <div className='row past-orders-container'>
+            <div className='rightcol' style={{ padding: 0 }}>
+              <Table striped bordered hover size='sm'>
+                <thead>
+                  <tr>
+                    <th>מספר הזמנה</th>
+                    <th>תאריך הזמנה</th>
+                    <th>עלות כוללת</th>
+                    <th>סטטוס הזמנה</th>
+                    <th>פירוט</th>
+                  </tr>
+                </thead>
+                <tbody>{ordersMapper()}</tbody>
+              </Table>
+            </div>
+          </div>
+        )}
+      </Accordion.Body>
+    </Accordion.Item>
+  }
 }
 export default Profile

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import '../CSS/HomePageCSS.css'
-import HomeComponent from '../Components/HomeComponent'
+import HomeComponent from '../Components/Home'
 import MenuComponent from '../Components/MenuComponent'
 import Footer from '../Components/Footer'
 
