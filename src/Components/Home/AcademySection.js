@@ -1,11 +1,11 @@
 import IDAN from "../../Images/idan.webp";
-import Bounce from "react-reveal/Bounce";
+import Fade from "react-reveal/Fade";
 
 export default function AcademySection(props) {
   return (
     <div className="third-container">
       <div className="row crew-row">
-        <Bounce left>
+        <Fade left cascade>
           <div className="row academy-row">
             <div className="col button-col">
               <h1 className="sec-title">האקדמיה של IM.Barber יוצאת לדרך</h1>
@@ -30,7 +30,7 @@ export default function AcademySection(props) {
               </div>
             </div>
           </div>
-        </Bounce>
+        </Fade>
       </div>
     </div>
   );
