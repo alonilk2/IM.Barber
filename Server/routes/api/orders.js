@@ -46,7 +46,6 @@ router.post("/postorder", async (req, res) => {
 });
 
 router.post("/getordersperuser", async (req, res) => {
-  console.log(req.body);
   try {
     const result = await db.orders.findAll({
       where: {
@@ -68,7 +67,6 @@ router.get("/getallorders", async (req, res) => {
     const result = await db.orders.findAll({
       include: [{ model: db.users, as: "owner" }],
     });
-    console.log(result);
     res.json({
       success: true,
       result: result,
@@ -78,6 +76,7 @@ router.get("/getallorders", async (req, res) => {
     res.json({ success: false, error: err });
   }
 });
+
 router.post("/shiporder", async (req, res) => {
   try {
     const result = await db.orders.update(
@@ -90,7 +89,6 @@ router.post("/shiporder", async (req, res) => {
         },
       }
     );
-    console.log(result);
     res.json({
       success: true,
       result: result,
@@ -100,4 +98,5 @@ router.post("/shiporder", async (req, res) => {
     res.json({ success: false, error: err });
   }
 });
+
 module.exports = router;

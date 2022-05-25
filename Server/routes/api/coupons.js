@@ -16,6 +16,7 @@ router.post("/coupon/testcoupon", async (req, res) => {
       success: true
     });
   } catch (error) {
+    console.log(error)
     res.json({
       success: false,
     });

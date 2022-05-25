@@ -99,7 +99,7 @@ exports.PasswordRecovery = (email, key) => {
       'https://imbarber.com/reset/' +
       email +
       '/' +
-      token +
+      key +
       '</a>' +
       '<br><br>' +
       '<p>--Team</p>'
