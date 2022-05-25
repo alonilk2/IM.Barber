@@ -21,7 +21,7 @@ router.post(
     try {
       transporter.sendMail(
         MailMessages.PasswordRecovery(req.body.email, req.hash),
-        function (error, info) {
+        function (error) {
           if (error) {
             return res.json({
               error: error,

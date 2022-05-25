@@ -1,16 +1,9 @@
 var router = require("express").Router(),
-  bodyParser = require("body-parser"),
-  multer = require("multer"),
-  path = require("path"),
-  fs = require("fs");
+  multer = require("multer");
 
 const uploadpath = "uploads";
 const db = require("../../models/index.js");
-const products = require("../../models/producttable.js");
 
-const handleError = (err, res) => {
-  res.status(500).contentType("text/plain").end(err);
-};
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -45,10 +38,8 @@ router.get("/products/getproduct/:productid", async (req, res) => {
     const product = await db.producttable.findOne({
       where: { id: req.params.productid },
     });
-    console.log(product);
     res.send(product);
   } catch (error) {
-    console.log(error);
     res.send(error);
   }
 });
@@ -81,7 +72,6 @@ router.get("/products/getproducts&p=:pageNum", async (req, res) => {
       products: product,
     });
   } catch (error) {
-    console.log(error);
     res.send(error);
   }
 });
@@ -94,7 +84,6 @@ router.get("/products/getproducts", async (req, res) => {
       products: product,
     });
   } catch (error) {
-    console.log(error);
     res.send(error);
   }
 });
@@ -104,9 +93,8 @@ router.post(
   "/products/addproduct",
   upload.array("image", 6),
   async (req, res) => {
-    console.log(req);
     try {
-      const product = await db.producttable.create(
+      await db.producttable.create(
         {
           price: req.body.price,
           producttitle: req.body.producttitle,
@@ -127,7 +115,6 @@ router.post(
         success: true,
       });
     } catch (error) {
-      console.log(error);
       res.json({
         error: error,
       });
@@ -143,7 +130,7 @@ router.post(
       img = await db.producttable.findOne({
         where: { id: req.body.id },
       });
-      const product = await db.producttable.update(
+      await db.producttable.update(
         {
           price: req.body.price,
           producttitle: req.body.producttitle,
@@ -186,7 +173,7 @@ router.post(
 );
 router.post("/products/removeproduct", async (req, res) => {
   try {
-    const product = await db.producttable.destroy({
+    await db.producttable.destroy({
       where: {
         id: req.body.id,
       },
