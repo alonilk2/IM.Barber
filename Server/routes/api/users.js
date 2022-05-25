@@ -1,10 +1,8 @@
 var router = require("express").Router(),
   bcrypt = require("bcrypt"),
-  saltRounds = 10,
   MailMessages = require("../../MailMessages"),
   bodyParser = require("body-parser"),
-  middlewares = require("./middlewares"),
-  crypto = require("crypto");
+  middlewares = require("./middlewares")
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
