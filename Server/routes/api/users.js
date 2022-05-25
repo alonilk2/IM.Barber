@@ -2,7 +2,7 @@ var router = require("express").Router(),
   bcrypt = require("bcrypt"),
   MailMessages = require("../../MailMessages"),
   bodyParser = require("body-parser"),
-  middlewares = require("./middlewares")
+  middlewares = require("./middlewares");
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
@@ -18,24 +18,20 @@ router.post(
   middlewares.hashMiddleware,
   middlewares.saveRecoveryToken,
   (req, res) => {
-    try {
-      transporter.sendMail(
-        MailMessages.PasswordRecovery(req.body.email, req.hash),
-        function (error) {
-          if (error) {
-            return res.json({
-              error: error,
-              status: 1,
-            });
-          }
-          res.json({
-            success: true,
+    transporter.sendMail(
+      MailMessages.PasswordRecovery(req.body.email, req.hash),
+      function (error) {
+        if (error) {
+          return res.json({
+            error: error,
+            status: 1,
           });
         }
-      );
-    } catch (error) {
-      res.send(error);
-    }
+        res.json({
+          success: true,
+        });
+      }
+    );
   }
 );
 
@@ -47,25 +43,21 @@ router.post(
   middlewares.hashMiddleware,
   middlewares.updatePasswordMiddleware,
   (req, res) => {
-    try {
-      transporter.sendMail(
-        MailMessages.ChangedPass(req.body.email),
-        function (error, info) {
-          if (error) {
-            res.json({
-              error: error,
-              status: 1,
-            });
-          }
+    transporter.sendMail(
+      MailMessages.ChangedPass(req.body.email),
+      function (error, info) {
+        if (error) {
           res.json({
-            success: true,
-            message: info,
+            error: error,
+            status: 1,
           });
         }
-      );
-    } catch (error) {
-      res.send(error);
-    }
+        res.json({
+          success: true,
+          message: info,
+        });
+      }
+    );
   }
 );
 
@@ -77,21 +69,17 @@ router.post(
   middlewares.hashMiddleware,
   middlewares.updatePasswordMiddleware,
   (req, res) => {
-    try {
-      transporter.sendMail(MailMessages.ChangedPass(), (error, info) => {
-        if (error)
-          res.json({
-            error: error,
-            status: 0,
-          });
+    transporter.sendMail(MailMessages.ChangedPass(), (error, info) => {
+      if (error)
         res.json({
-          success: true,
-          message: info,
+          error: error,
+          status: 0,
         });
+      res.json({
+        success: true,
+        message: info,
       });
-    } catch (err) {
-      res.send(err);
-    }
+    });
   }
 );
 
