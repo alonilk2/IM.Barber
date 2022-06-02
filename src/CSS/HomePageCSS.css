@@ -440,6 +440,10 @@ video {
   .enter-shop-btn {
     margin: auto;
   }
+  .contact-home {
+    flex-direction: column;
+    align-items: center;
+  }
   .abdev {
     margin: 5% 0 !important;
     display: flex;
@@ -752,6 +756,7 @@ video {
   direction: rtl;
   align-self: flex-end;
   justify-self: flex-end;
+  padding: 2%;
 }
 
 .foot-link {
@@ -820,7 +825,7 @@ video {
 }
 
 .social-icon {
-  margin: 10% 2%;
+  margin: 10% 2% 2%;
   width: 60px;
   height: 60px;
 }
@@ -1343,7 +1348,7 @@ video {
     font-size: 22px;
     text-align: center !important;
     direction: rtl;
-    line-height: 1.8;
+    line-height: 1;
   }
 
   .crew-img {

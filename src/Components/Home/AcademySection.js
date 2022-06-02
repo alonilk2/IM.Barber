@@ -5,14 +5,16 @@ export default function AcademySection(props) {
   return (
     <div className="third-container">
       <div className="row crew-row">
-        <Fade left cascade>
-          <div className="row academy-row">
+        <div className="row academy-row">
+          <Fade left cascade delay={100}>
             <div className="col button-col">
               <h1 className="sec-title">האקדמיה של IM.Barber יוצאת לדרך</h1>
               <a href="/academy">
                 <div className="academy-button">גלה עוד...</div>
               </a>
             </div>
+          </Fade>
+          <Fade top cascade delay={400}>
             <div className="col idan-logo">
               <img
                 src={IDAN}
@@ -20,7 +22,9 @@ export default function AcademySection(props) {
                 alt="עידן מבלייב תמונה"
               ></img>
             </div>
+          </Fade>
 
+          <Fade right cascade delay={600}>
             <div className="col title-col">
               <div className="row product-homepage-content">
                 <h2 className="academy-homepage-title">
@@ -29,8 +33,8 @@ export default function AcademySection(props) {
                 </h2>
               </div>
             </div>
-          </div>
-        </Fade>
+          </Fade>
+        </div>
       </div>
     </div>
   );

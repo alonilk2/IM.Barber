@@ -68,7 +68,7 @@ router.post(
   middlewares.setNewPassTokenMiddleware,
   middlewares.hashMiddleware,
   middlewares.updatePasswordMiddleware,
-  (req, res) => {
+  (_req, res) => {
     transporter.sendMail(MailMessages.ChangedPass(), (error, info) => {
       if (error)
         res.json({
@@ -159,7 +159,7 @@ router.post("/approve_user", async (req, res) => {
         await bcrypt.compare(
           token,
           user.token,
-          async function (error1, result) {
+          async function (_error1, result) {
             if (result) {
               await db.users.update(
                 { active: 1 },

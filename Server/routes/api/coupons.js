@@ -4,7 +4,19 @@ const db = require("../../models/index.js");
 
 // ------------------ GETTERS ------------------ //
 
-router.post("/coupon/testcoupon", async (req, res) => {
+router.get("/coupons/getcoupons", async (req, res) => {
+  try {
+    const coupons = await db.coupons.findAll();
+    res.send(coupons);
+  } catch (error) {
+    res.json({
+      success: false,
+    });
+  }
+});
+
+
+router.post("/coupons/testcoupon", async (req, res) => {
   try {
     const coupon = await db.coupons.findOne({
       where: {
@@ -25,8 +37,9 @@ router.post("/coupon/testcoupon", async (req, res) => {
 
 // ------------------ SETTERS ------------------ //
 
-router.post("/coupon/addcoupon", async (req, res) => {
+router.post("/coupons/addcoupon", async (req, res) => {
   try {
+    console.log(req)
     const coupon = await db.coupons.create(
       {
         code: req.body.code,
@@ -46,9 +59,9 @@ router.post("/coupon/addcoupon", async (req, res) => {
   }
 });
 
-router.post("/coupon/removecoupon", async (req, res) => {
+router.post("/coupons/removecoupon", async (req, res) => {
   try {
-    const coupon = await db.coupon.destroy(
+    const coupon = await db.coupons.destroy(
       {
         where: {
           code: req.body.code,

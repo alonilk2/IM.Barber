@@ -1,7 +1,7 @@
-import React, { Component, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { history } from '../../history'
 import '../../CSS/HomePageCSS.css'
+import './Admin.css'
 import Accordion from 'react-bootstrap/Accordion'
 import ProductsManagement from './ProductsManagement'
 import OrdersManagement from './OrdersManagement'
@@ -10,6 +10,7 @@ import useOrders from '../../Hooks/useOrders'
 import useUser from '../../Hooks/useUser'
 import CategoryManagement from './CategoryManagement'
 import { SIGNIN_AS_ADMIN } from '../../Constants/userConst'
+import CouponsManagement from './CouponsManagement'
 
 function AdminComponent (props) {
   const [ordersList, newOrdersCounter] = useOrders()
@@ -26,6 +27,7 @@ function AdminComponent (props) {
               <ProductsManagement />
               <CategoryManagement />
               <OrdersManagement />
+              <CouponsManagement />
             </Accordion>
           </>
         )

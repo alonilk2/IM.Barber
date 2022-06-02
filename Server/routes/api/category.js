@@ -32,7 +32,6 @@ const upload = multer({
 router.get('/category/getcategories', async (_req, res) => {
   try {
     const categoryarr = await db.categories.findAll()
-    console.log(categoryarr)
     res.send(categoryarr)
   } catch (error) {
     console.log(error)

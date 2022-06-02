@@ -7,9 +7,9 @@ import Fade from "react-reveal/Fade";
 export default function StoreSection(props) {
   return (
     <div className="store-home-container">
-      <Fade right cascade>
-        <div className="row crew-row">
-          <div className="row product-homepage-content">
+      <div className="row crew-row">
+        <div className="row product-homepage-content">
+          <Fade left cascade>
             <h2 className="discover-homepage-title">
               {" "}
               גלה את <span className="beauty">הטיפוח</span> מחדש{" "}
@@ -26,32 +26,32 @@ export default function StoreSection(props) {
                 כניסה לחנות >>
               </button>
             </div>
-          </div>
-          <div className="row product-homepage-row">
-            <Roll right delay={100}>
-              <img
-                src={c1}
-                className="col product-homepage-img"
-                alt="קרם פנים"
-              ></img>
-            </Roll>{" "}
-            <Roll right delay={250}>
-              <img
-                src={c2}
-                className="col product-homepage-img"
-                alt="קרם לשיער"
-              ></img>
-            </Roll>{" "}
-            <Roll right delay={400}>
-              <img
-                src={c3}
-                className="col product-homepage-img"
-                alt="קרם לגבר"
-              ></img>
-            </Roll>
-          </div>
+          </Fade>
         </div>
-      </Fade>
+        <div className="row product-homepage-row">
+          <Roll right delay={200}>
+            <img
+              src={c1}
+              className="col product-homepage-img"
+              alt="קרם פנים"
+            ></img>
+          </Roll>{" "}
+          <Roll top delay={400}>
+            <img
+              src={c2}
+              className="col product-homepage-img"
+              alt="קרם לשיער"
+            ></img>
+          </Roll>{" "}
+          <Roll left delay={600}>
+            <img
+              src={c3}
+              className="col product-homepage-img"
+              alt="קרם לגבר"
+            ></img>
+          </Roll>
+        </div>
+      </div>
     </div>
   );
 }

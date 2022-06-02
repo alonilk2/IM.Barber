@@ -5,8 +5,6 @@ const db = require("../../models/index.js"),
   saltRounds = 10,
   crypto = require("crypto");
 
-const { token } = require("morgan");
-
 async function userMiddleware(req, res, next) {
   try {
     req.user = await db.users.findOne({
@@ -28,7 +26,7 @@ const hashMiddleware = async (req, res, next) => {
   });
 };
 
-const randomTokenMiddleware = (req, res, next) => {
+const randomTokenMiddleware = (req, _res, next) => {
   req.token = crypto
     .randomBytes(32)
     .toString("hex")
@@ -36,11 +34,11 @@ const randomTokenMiddleware = (req, res, next) => {
   next();
 };
 
-const setNewPassTokenMiddleware = (req, res, next) => {
+const setNewPassTokenMiddleware = (req, _res, next) => {
   req.token = req.body.newpass;
   next();
 };
-const setPassTokenMiddleware = (req, res, next) => {
+const setPassTokenMiddleware = (req, _res, next) => {
   req.token = req.body.password;
   next();
 };
@@ -103,7 +101,7 @@ const compareOldPassword = async (req, res, next) => {
   await bcrypt.compare(
     req.body.oldpass,
     user.dataValues.password,
-    async function (err, result) {
+    async function (err, _result) {
       if (err) return res.send(err);
       next();
     }
@@ -114,7 +112,7 @@ const comparePassword = async (req, res, next) => {
   await bcrypt.compare(
     req.body.password,
     req.user.dataValues.password,
-    async function (err, result) {
+    async function (err, _result) {
       if (err) return res.send(err);
       next();
     }
@@ -130,7 +128,7 @@ const validateUserActive = async (req, res, next) => {
   next();
 };
 
-const signJWT = (req, res, next) => {
+const signJWT = (req, _res, next) => {
   let user = req.user;
   req.tok = jwt.sign({ user }, config.jwt, {
     expiresIn: 129600,
