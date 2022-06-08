@@ -135,11 +135,11 @@ router.post(
             });
           }
         );
-      } else
-        res.json({
-          success: false,
-          error: 0, // 0 Means user already registered.
-        });
+      }
+      res.json({
+        success: false,
+        error: 0, // 0 Means user already registered.
+      });
     } catch (err) {
       res.json({
         success: false,

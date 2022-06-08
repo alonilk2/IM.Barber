@@ -274,7 +274,7 @@ video {
   display: flex;
   flex-direction: column;
   direction: rtl;
-  background-color: rgba(224, 194, 119, 1);
+  background-color: rgb(255, 207, 118);
   align-items: flex-start;
   overflow: hidden;
 }
@@ -339,9 +339,6 @@ video {
   padding-right: 15% !important;
 }
 
-.product-homepage-img {
-  width: 40vw !important;
-}
 .product-homepage-row {
   display: flex;
   flex-direction: column;
@@ -359,7 +356,7 @@ video {
   justify-content: center;
 }
 .beauty {
-  color: rgba(224, 194, 119, 1);
+  color: rgb(255, 207, 118);
   font-weight: 500;
   font-size: 15vw;
 }
@@ -941,7 +938,7 @@ a:visited {
 }
 
 a:hover {
-  color: rgba(224, 194, 119, 1) !important;
+  color: rgb(255, 207, 118) !important;
   background-color: transparent;
   text-decoration: underline;
 }
@@ -1005,10 +1002,7 @@ a:hover {
   color: gold;
   text-shadow: 0px 0px #00000000;
 }
-.enter-shop-btn {
-  font-size: 35px;
-  font-weight: 600;
-}
+
 video {
   object-fit: cover;
   height: 100%;
@@ -1028,13 +1022,15 @@ video {
   .enter-shop-btn {
     font-size: 45px;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin: 1rem;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    border-radius: 50px;
+    padding: 0 1%;
   }
   .beauty {
-    color: rgba(224, 194, 119, 1);
+    color: rgb(255, 207, 118);
     font-weight: 500;
     font-size: 6vw;
   }
@@ -1046,7 +1042,7 @@ video {
   }
   .store-home-container {
     position: relative;
-    margin: 2%;
+    margin: 8% 2%;
     padding: 0%;
   }
   .contact-container {
@@ -1055,7 +1051,7 @@ video {
     display: flex;
     flex-direction: column;
     direction: rtl;
-    background-color: rgba(224, 194, 119, 1);
+    background-color: rgb(255, 207, 118);
     align-items: flex-start;
   }
   .css-mqt2s5 {
@@ -1076,8 +1072,11 @@ video {
     margin: 0% !important;
   }
   .product-homepage-img {
-    width: 17vw !important;
-    max-width: 300px !important;
+    width: 18vw !important;
+    border-radius: 50px;
+    box-shadow: 0px 13px 34px 14px rgba(0,0,0,0.1);
+    background-color: rgb(255, 207, 118);
+    padding: 1px;
   }
   .fourth-container {
     position: relative;
@@ -1109,7 +1108,7 @@ video {
   .discover-homepage-title {
     font-size: 5vw !important;
     font-weight: bolder !important;
-    margin: 4%;
+    margin: 4% 4% 1% 4%;
   }
   .button-col {
     display: flex;
@@ -1136,7 +1135,7 @@ video {
     background: linear-gradient(
       276deg,
       rgba(255, 233, 138, 1) 20%,
-      rgba(255, 243, 189, 1) 100%
+      rgb(255, 207, 118) 100%
     );
     overflow: hidden;
     justify-content: center;
@@ -1259,7 +1258,7 @@ video {
     background-color: #ffaebc;
   }
   .react-datepicker__header {
-    background-color: rgba(224, 194, 119, 1) !important;
+    background-color: rgb(255, 207, 118) !important;
   }
   .standard-btn.back {
     background: transparent;
@@ -1400,11 +1399,11 @@ video {
     z-index: 2;
   }
   .step.current {
-    border: 4px solid rgba(224, 194, 119, 1);
+    border: 4px solid rgb(255, 207, 118);
   }
   .step.completed {
-    border: 4px solid rgba(224, 194, 119, 1);
-    background-color: rgba(224, 194, 119, 1);
+    border: 4px solid rgb(255, 207, 118);
+    background-color: rgb(255, 207, 118);
   }
 
   .step-box {
@@ -1422,7 +1421,7 @@ video {
     z-index: 0;
   }
   .passed {
-    border-bottom: 3px solid rgba(224, 194, 119, 1);
+    border-bottom: 3px solid rgb(255, 207, 118);
     position: absolute;
     bottom: 50%;
     z-index: 1;

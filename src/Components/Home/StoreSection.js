@@ -1,4 +1,4 @@
-import c1 from "../../Images/1.webp";
+import c1 from "../../Images/1.png";
 import c2 from "../../Images/2.webp";
 import c3 from "../../Images/3.webp";
 import Roll from "react-reveal/Roll";
@@ -14,11 +14,12 @@ export default function StoreSection(props) {
               {" "}
               גלה את <span className="beauty">הטיפוח</span> מחדש{" "}
             </h2>
-            <div className="storetitle">
-              <h1 style={{ display: "flex", alignItems: "flex-end" }}>
+            <h1 style={{ textAlign: 'center' }}>
                 {" "}
-                חנות המוצרים של IM.Barber{" "}
+                בחנות המוצרים של IM.Barber{" "}
               </h1>
+            <div className="storetitle">
+
               <button
                 className="enter-shop-btn bounce"
                 onClick={() => props.history.push("/store")}
@@ -29,27 +30,22 @@ export default function StoreSection(props) {
           </Fade>
         </div>
         <div className="row product-homepage-row">
-          <Roll right delay={200}>
-            <img
-              src={c1}
-              className="col product-homepage-img"
-              alt="קרם פנים"
-            ></img>
-          </Roll>{" "}
-          <Roll top delay={400}>
-            <img
-              src={c2}
-              className="col product-homepage-img"
-              alt="קרם לשיער"
-            ></img>
-          </Roll>{" "}
-          <Roll left delay={600}>
-            <img
-              src={c3}
-              className="col product-homepage-img"
-              alt="קרם לגבר"
-            ></img>
-          </Roll>
+          <img
+            src={c1}
+            className="product-homepage-img"
+            alt="קרם פנים"
+          ></img>{" "}
+          <img
+            src={c2}
+            className="product-homepage-img"
+            style={{ transform: 'scale(1.4)' }}
+            alt="קרם לשיער"
+          ></img>
+          <img
+            src={c3}
+            className="product-homepage-img"
+            alt="קרם לגבר"
+          ></img>
         </div>
       </div>
     </div>
