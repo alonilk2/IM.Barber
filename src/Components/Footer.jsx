@@ -62,6 +62,9 @@ function Footer() {
                   color: "white",
                   display: "flex",
                   alignItems: "center",
+                  fontSize: 12,
+                  margin: 5,
+                  color: 'rgba(255,255,255,0.4)'
                 }}
               >
                 Built by

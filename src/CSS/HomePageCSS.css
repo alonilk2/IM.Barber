@@ -80,18 +80,16 @@ body {
 }
 .academy-homepage-title,
 .discover-homepage-title {
-  font-size: 12vw;
+  font-size: 9vw;
   font-weight: 400;
   text-align: center;
-  margin-bottom: 0%;
+  margin: 4% 15%;
+  line-height: 0.9;
 }
-.discover-homepage-title {
-  margin: 0% 15% 15% 15%;
-  width: 80% !important;
-}
+
 .academy-button {
-  width: 200px;
-  background-color: #ff5757;
+  width: 250px;
+  background-color: #841928;
   border: 0px solid black;
   border-radius: 50px;
   font-size: 25px;
@@ -104,12 +102,13 @@ body {
 .academy-row .sec-title {
   text-align: start;
   direction: rtl;
-  font-size: calc(1.6vw + 1em);
+  font-size: calc(1.4vw + 1em);
+  font-weight: lighter;
 }
 .academy-homepage-title .beauty {
-  color: #ff5757 !important;
+  color: #841928 !important;
   font-weight: 600;
-  font-size: 15vw;
+  font-size: 90px;
 }
 .title-col {
   display: flex;
@@ -359,6 +358,7 @@ video {
   color: rgb(255, 207, 118);
   font-weight: 500;
   font-size: 15vw;
+  white-space: nowrap;
 }
 .bounce {
   animation: bounce 2s infinite;
@@ -433,9 +433,18 @@ video {
   }
   .storetitle {
     white-space: nowrap;
+    text-align: center;
+    font-size: 25px;
+    border: 3px solid #841928;
+    border-radius: 50px;
+    padding: 2% 3%;
+    width: 250px !important;
   }
   .enter-shop-btn {
     margin: auto;
+    text-align: center;
+    color: #841928 !important;
+    font-weight: 700;
   }
   .contact-home {
     flex-direction: column;
@@ -494,7 +503,7 @@ video {
     color: black;
     text-align: center;
     width: 100%;
-    margin: 50% 0% 50% 0% !important;
+    margin: 25% 0% 25% 0% !important;
   }
 
   .txt-box {
@@ -760,12 +769,12 @@ video {
   font-size: 15px;
   padding: 0 !important;
   margin: 0.3rem;
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(255, 255, 255, 0.4) !important;
 }
 .foot .title {
   font-weight: 400;
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
 }
 .home-main-btn {
   background-color: #111111 !important;
@@ -794,7 +803,8 @@ video {
   text-align: center;
   justify-content: center;
   bottom: 10% !important;
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+  font-size: 12px;
 }
 .social-navbar {
   position: absolute;
@@ -1007,6 +1017,20 @@ video {
   object-fit: cover;
   height: 100%;
 }
+.product-homepage-img {
+  width: 30vw !important;
+  border-radius: 50px;
+  box-shadow: 0px 13px 34px 14px rgba(0,0,0,0.1);
+  background-color: rgb(255, 207, 118);
+  padding: 1px;
+}
+.product-homepage-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 15% !important;
+}
+
 @media all and (min-width: 800px) {
   video {
     object-fit: cover;
@@ -1014,20 +1038,24 @@ video {
     width: 100%;
   }
   .storetitle {
-    margin-right: "15%";
     display: flex;
+
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    border: 3px solid #841928;
+    border-radius: 50px;
+    width: 300px !important;
+    padding: 0.6% 0%;
   }
   .enter-shop-btn {
-    font-size: 45px;
-    font-weight: 600;
-    margin: 1rem;
+    font-size: 28px;
+    font-weight: 400;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     border-radius: 50px;
-    padding: 0 1%;
+    color: #841928 !important;
+
   }
   .beauty {
     color: rgb(255, 207, 118);
@@ -1035,19 +1063,19 @@ video {
     font-size: 6vw;
   }
   .academy-homepage-title .beauty {
-    color: #ff5757 !important;
+    color: #841928 !important;
     font-weight: 600;
     font-size: 6vw;
     white-space: nowrap;
   }
   .store-home-container {
     position: relative;
-    margin: 8% 2%;
+    margin: 4% 2% 5% 2%;
     padding: 0%;
   }
   .contact-container {
     border: 0px;
-    padding: 7% 5% !important;
+    padding: 2% 5% !important;
     display: flex;
     flex-direction: column;
     direction: rtl;
@@ -1106,8 +1134,8 @@ video {
     width: 33% !important;
   }
   .discover-homepage-title {
-    font-size: 5vw !important;
-    font-weight: bolder !important;
+    font-size: 3.5vw !important;
+    font-weight: lighter !important;
     margin: 4% 4% 1% 4%;
   }
   .button-col {
@@ -1121,7 +1149,8 @@ video {
     max-width: 650px;
   }
   .academy-homepage-title {
-    font-size: calc(4vw + 1em);
+    font-size: calc(2.5vw + 1em);
+    font-weight: lighter;
   }
   .academy-row {
     flex-wrap: nowrap !important;

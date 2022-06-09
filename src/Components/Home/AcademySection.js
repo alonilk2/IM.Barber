@@ -29,7 +29,7 @@ export default function AcademySection(props) {
               <div className="row product-homepage-content">
                 <h2 className="academy-homepage-title">
                   {" "}
-                  רוצה ללמוד <span className="beauty">עיצוב שיער</span> לגברים ?
+                  רוצה ללמוד<br /><span className="beauty">עיצוב שיער</span><br /> לגברים ?
                 </h2>
               </div>
             </div>
