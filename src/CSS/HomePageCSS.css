@@ -76,25 +76,26 @@ body {
 }
 .secondary-paragraph {
   direction: rtl;
-  line-height: 1.8;
+  line-height: 1.6;
+  font-weight: 100;
 }
 .academy-homepage-title,
 .discover-homepage-title {
   font-size: 9vw;
-  font-weight: 400;
+  font-weight: 100;
   text-align: center;
-  margin: 4% 15%;
+  margin: 4% 0;
   line-height: 0.9;
 }
 
 .academy-button {
-  width: 250px;
+  width: 200px;
   background-color: #841928;
   border: 0px solid black;
   border-radius: 50px;
-  font-size: 25px;
+  font-size: 18px;
   font-weight: 500;
-  padding: 5% 3%;
+  padding: 4% 1%;
   color: #fff3bc;
   margin-top: 3%;
   direction: rtl;
@@ -108,7 +109,7 @@ body {
 .academy-homepage-title .beauty {
   color: #841928 !important;
   font-weight: 600;
-  font-size: 90px;
+  font-size: 16vw;
 }
 .title-col {
   display: flex;
@@ -357,7 +358,7 @@ video {
 .beauty {
   color: rgb(255, 207, 118);
   font-weight: 500;
-  font-size: 15vw;
+  font-size: 15vw !important;
   white-space: nowrap;
 }
 .bounce {
@@ -434,11 +435,12 @@ video {
   .storetitle {
     white-space: nowrap;
     text-align: center;
-    font-size: 25px;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 1.5% 1%;
     border: 3px solid #841928;
     border-radius: 50px;
-    padding: 2% 3%;
-    width: 250px !important;
+    width: 200px !important;
   }
   .enter-shop-btn {
     margin: auto;
@@ -456,9 +458,7 @@ video {
     justify-content: center;
 
   }
-  .sec-title {
-    font-size: 28px !important;
-  }
+
   .idan-logo {
     display: flex;
     justify-content: center;
@@ -1018,8 +1018,8 @@ video {
   height: 100%;
 }
 .product-homepage-img {
-  width: 30vw !important;
-  border-radius: 50px;
+  width: 32vw !important;
+  border-radius: 50%;
   box-shadow: 0px 13px 34px 14px rgba(0,0,0,0.1);
   background-color: rgb(255, 207, 118);
   padding: 1px;
@@ -1029,6 +1029,7 @@ video {
   flex-direction: row;
   align-items: center;
   margin-bottom: 15% !important;
+  flex-wrap: nowrap;
 }
 
 @media all and (min-width: 800px) {
@@ -1037,19 +1038,22 @@ video {
     height: 100% !important;
     width: 100%;
   }
+  .academy-button {
+    padding: 5% 0%;
+    width: 250px !important;
+  }
   .storetitle {
     display: flex;
-
     flex-direction: row;
     justify-content: center;
     border: 3px solid #841928;
     border-radius: 50px;
-    width: 300px !important;
-    padding: 0.6% 0%;
+    width: 250px !important;
+    padding: 0.6% 2%;
   }
   .enter-shop-btn {
-    font-size: 28px;
-    font-weight: 400;
+    font-size: 18px !important;
+    font-weight: 500;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -1060,12 +1064,12 @@ video {
   .beauty {
     color: rgb(255, 207, 118);
     font-weight: 500;
-    font-size: 6vw;
+    font-size: 6vw !important;
   }
   .academy-homepage-title .beauty {
     color: #841928 !important;
     font-weight: 600;
-    font-size: 6vw;
+    font-size: 6vw !important;
     white-space: nowrap;
   }
   .store-home-container {
@@ -1075,7 +1079,7 @@ video {
   }
   .contact-container {
     border: 0px;
-    padding: 2% 5% !important;
+    padding: 4.5% 5% !important;
     display: flex;
     flex-direction: column;
     direction: rtl;
@@ -1180,7 +1184,6 @@ video {
       0% 20%
     ) !important;
     margin: 0px 0px 100px 0px;
-    padding: 0% 0% 0% 2%;
     height: 700px;
   }
   .auth-container {
@@ -1376,7 +1379,8 @@ video {
     font-size: 22px;
     text-align: center !important;
     direction: rtl;
-    line-height: 1;
+    line-height: 0.9;
+    font-weight: 100 !important;
   }
 
   .crew-img {

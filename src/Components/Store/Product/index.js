@@ -113,13 +113,13 @@ function Product(props) {
   return (
     <div className="store-container" style={{ padding: 0 }}>
       <Helmet>
-        <title>{`I.M Barber - ${
+        <title>{`IM.Barber - ${
           product ? product.producttitle : "חנות המוצרים"
         }`}</title>
         ‍
         <meta
           name="description"
-          content="חנות המוצרים של I.M Barber - כל מוצרי הטיפוח הכי שווים לגבר, במחירי רצפה!"
+          content="חנות המוצרים של IM.Barber - כל מוצרי הטיפוח הכי שווים לגבר, במחירי רצפה!"
         />
       </Helmet>
 

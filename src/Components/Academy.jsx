@@ -37,7 +37,7 @@ export default function Academy () {
   return (
     <div className='academy-container'>
             <Helmet>
-        <title>I.M Academy - האקדמיה לספרות</title>‍
+        <title>IM.Barber Academy - האקדמיה לספרות</title>‍
         <meta
           name='description'
           content='האקדמיה לספרות של I.M Barber - תמיד חלמת להיות ספר גברים ? בוא להגשים אותו עכשיו!'

@@ -34,10 +34,10 @@ function StoreHome(props) {
   return (
     <div className="store-container">
       <Helmet>
-        <title>I.M Barber - חנות המוצרים</title>‍
+        <title>IM.Barber - חנות המוצרים</title>‍
         <meta
           name="description"
-          content="חנות המוצרים של I.M Barber - כל מוצרי הטיפוח הכי שווים לגבר, במחירי רצפה!"
+          content="חנות המוצרים של IM.Barber - כל מוצרי הטיפוח הכי שווים לגבר, במחירי רצפה!"
         />
       </Helmet>
       <AddToCartAnimation />

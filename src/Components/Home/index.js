@@ -23,7 +23,7 @@ const HomeComponent = forwardRef((props, ref) => {
   return (
     <div className="content-container">
       <Helmet>
-        <title>I.M Barber - דף הבית</title>‍
+        <title>IM.Barber - דף הבית</title>‍
       </Helmet>
       <VideoSection history={history} />
       <AboutSection size={size} />

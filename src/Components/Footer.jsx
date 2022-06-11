@@ -64,7 +64,8 @@ function Footer() {
                   alignItems: "center",
                   fontSize: 12,
                   margin: 5,
-                  color: 'rgba(255,255,255,0.4)'
+                  color: 'rgba(255,255,255,0.4)',
+                  whiteSpace: 'nowrap'
                 }}
               >
                 Built by

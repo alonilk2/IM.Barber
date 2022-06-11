@@ -26,7 +26,7 @@ export default function AcademySection(props) {
 
           <Fade right cascade delay={600}>
             <div className="col title-col">
-              <div className="row product-homepage-content">
+              <div className="row product-homepage-content" style={{justifyContent: 'flex-start'}}>
                 <h2 className="academy-homepage-title">
                   {" "}
                   רוצה ללמוד<br /><span className="beauty">עיצוב שיער</span><br /> לגברים ?
