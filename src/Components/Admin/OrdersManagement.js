@@ -33,7 +33,7 @@ export default function OrdersManagement (props) {
 
   const mapper = () => {
     if (ordersList) {
-      return ordersList.orders?.data?.result?.map((order, index) => {
+      return ordersList.data?.result?.map((order, index) => {
         if (order.shipped === false) {
           let jsonObj = JSON.parse(order.address)
           let cartJson = JSON.parse(order.cart)
@@ -78,7 +78,7 @@ export default function OrdersManagement (props) {
 
   const completedMapper = () => {
     if (ordersList) {
-      return ordersList.orders?.data?.result?.map((order, idx) => {
+      return ordersList.data?.result?.map((order, idx) => {
         if (order.shipped === true) {
           if (
             searchOrder &&

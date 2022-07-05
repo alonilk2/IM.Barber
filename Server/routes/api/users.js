@@ -115,7 +115,7 @@ router.post(
           lastname: req.body.lastname,
           password: req.hash,
           active: 0,
-          isAdmin: req.body.isadmin,
+          isadmin: req.body.isadmin,
           token: req.hash1,
         },
       });

@@ -18,7 +18,7 @@ function AdminComponent (props) {
   const dispatch = useDispatch()
   function renderByPermission () {
     if (user) {
-      if (user.data.user.isadmin === true) {
+      if (user.data?.user?.isadmin === true) {
         return (
           <>
             <h1 className='title'> ברוך הבא לפאנל הניהול !</h1>
