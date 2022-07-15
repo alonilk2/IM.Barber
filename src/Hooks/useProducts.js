@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import Axios from "axios";
 import { useSelector } from "react-redux";
 import { SERVER_ADDRESS } from "../Constants/generalConstants";
-import Axios from "axios";
 
 export default function useProducts(props) {
+  // const [ProductList, setProductList] = useState([]);
   const [FilteredProductList, setFilteredProductList] = useState([]);
   const [Pagination, setPagination] = useState(0);
   const [TotalCount, setTotalCount] = useState(0);
@@ -13,7 +14,6 @@ export default function useProducts(props) {
   const ProductList = useRef([]);
   const location = useLocation();
   let category = props?.category;
-  let allProducts = props?.allProducts;
 
   useEffect(() => {
     FilterResults();
@@ -23,11 +23,16 @@ export default function useProducts(props) {
     fetchProductList();
   }, [category, Pagination]);
 
+  useEffect(() => {
+    console.log(ProductList.current.length);
+    // console.log(Pagination);
+  }, [ProductList]);
+
   function FilterResults() {
     let tempProducts = [];
     if (filterBy?.length > 0 && !location.pathname.startsWith("/product")) {
       let filter = filterBy.toLowerCase();
-      ProductList.current.forEach((product) => {
+      ProductList.forEach((product) => {
         if (
           product.producttitle?.toLowerCase().includes(filter) ||
           product.brand?.toLowerCase().includes(filter) ||
@@ -42,37 +47,42 @@ export default function useProducts(props) {
   async function fetchProductList() {
     try {
       let response;
-      if (fetching) return;
+      if (fetching) {
+        return;
+      }
 
       setFetching(true);
       if (props?.product) {
-        // Products hook initialized with a product id
+        // If products hook initialized with a product id
         response = await Axios.get(
           SERVER_ADDRESS + `/products/getproduct/${props?.product}`
         );
         return (ProductList.current = response.data);
-      } else if (allProducts) {
-        response = await Axios.get(SERVER_ADDRESS + `/products/getproducts`);
-        return (ProductList.current = response.data.products);
       } else {
         if (category && category !== "all" && category !== null) {
-          // Products hook initialized with a category id
+          // If products hook initialized with a category id
           response = await Axios.get(
             SERVER_ADDRESS +
               `/products/getproduct/category/${
                 category.categoryid ? category.categoryid : category
               }`
           );
-        } else {
-          // Default
+        } else if (props?.allProducts) {
+          response = await Axios.get(
+            SERVER_ADDRESS + `/products/getproducts`
+          );
+          setTotalCount(response.products?.length);
+        }
+        else {
           response = await Axios.get(
             SERVER_ADDRESS + `/products/getproducts&p=${Pagination}`
           );
           setTotalCount(response.data.products.count);
         }
-        //prevent duplications
-        if (ProductList.current.length < response.data.products?.count)
-          //Append rows per page
+        if (
+          response.data.products.rows.length > 0 &&
+          ProductList.current.length < response.data.products?.count
+        )
           ProductList.current = [
             ...ProductList.current,
             ...response.data.products.rows,
@@ -91,13 +101,14 @@ export default function useProducts(props) {
       for (var i = 0; i < imageArr.length; i++) {
         fdata.append("image", imageArr[i]);
       }
+      console.log(newProduct)
       fdata.append("id", newProduct.id);
       fdata.append("producttitle", newProduct.producttitle.trim());
       fdata.append("price", newProduct.price);
       fdata.append("categoryid", newProduct.categoryid.label);
       fdata.append("brand", newProduct.brand);
       fdata.append("description", newProduct.description);
-      fdata.append("instock", newProduct.instock.value);
+      fdata.append("instock", newProduct.instock?.value);
       let result;
       if (
         newProduct.categoryid === "" ||
@@ -139,15 +150,18 @@ export default function useProducts(props) {
   }
 
   function nextPage() {
+    console.log(Pagination + " totalCount: "+ TotalCount);
+    // console.log(fetching);
+
     if ((Pagination === 0 || Pagination < TotalCount) && !fetching)
       if (TotalCount - Pagination >= 6) {
         console.log(Pagination);
         setPagination((Pagination) => Pagination + 6);
+        fetchProductList();
       } else {
         console.log(TotalCount - Pagination);
         fetchProductList();
       }
-      return false
   }
 
   if (FilteredProductList) return [FilteredProductList];

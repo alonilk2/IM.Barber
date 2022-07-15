@@ -5,7 +5,7 @@ var logger = require('morgan');
 var app = express();
 const compression = require('compression');
 const PORT = process.env.PORT || 8080;
-cors = require('cors');
+const cors = require('cors');
 /* ----------------- Database ----------------- */
 app.listen(PORT, function() {
     console.log("first api on port " +PORT);

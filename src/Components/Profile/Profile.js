@@ -60,7 +60,7 @@ function Profile (props) {
 
   useEffect(() => {
     if (user) dispatch(FetchOrdersPerUser(user.data.user.email))
-  })
+  }, [])
 
   const ordersMapper = () => {
     if (OrdersState && OrdersState.orders) {

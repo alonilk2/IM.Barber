@@ -78,7 +78,7 @@ router.get("/products/getproducts&p=:pageNum", async (req, res) => {
 
 router.get("/products/getproducts", async (req, res) => {
   try {
-    const product = await db.producttable.findAll();
+    const product = await db.producttable.findAndCountAll();
     res.send({
       success: true,
       products: product,
