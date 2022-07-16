@@ -44,7 +44,7 @@ router.get("/products/getproduct/:productid", async (req, res) => {
   }
 });
 
-router.get("/products/getproduct/category/:categoryid", async (req, res) => {
+router.get("/products/getproduct/category/:categoryid&p=:pageNum", async (req, res) => {
   try {
     const product = await db.producttable.findAndCountAll({
       limit: 6,
