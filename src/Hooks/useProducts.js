@@ -7,26 +7,21 @@ import { SERVER_ADDRESS } from "../Constants/generalConstants";
 export default function useProducts(props) {
   // const [ProductList, setProductList] = useState([]);
   const [FilteredProductList, setFilteredProductList] = useState([]);
-  const [Pagination, setPagination] = useState(0);
   const [TotalCount, setTotalCount] = useState(0);
   const [fetching, setFetching] = useState(false);
   const { filterBy } = useSelector((state) => state.search);
-  const ProductList = useRef([]);
+  const [ProductList, setProductList] = useState([]);
   const location = useLocation();
+  const Pagination = useRef(0);
   let category = props?.category;
 
   useEffect(() => {
     FilterResults();
   }, [filterBy]);
 
-  useEffect(() => {
-    fetchProductList();
-  }, [category, Pagination]);
-
-  useEffect(() => {
-    console.log(ProductList.current.length);
-    // console.log(Pagination);
-  }, [ProductList]);
+  // useEffect(() => {
+  //   fetchProductList();
+  // }, [category, Pagination.current]);
 
   function FilterResults() {
     let tempProducts = [];
@@ -47,9 +42,8 @@ export default function useProducts(props) {
   async function fetchProductList() {
     try {
       let response;
-      if (fetching) {
-        return;
-      }
+      console.log(fetching + " - " + Pagination.current);
+      if (fetching) return;
 
       setFetching(true);
       if (props?.product) {
@@ -57,7 +51,7 @@ export default function useProducts(props) {
         response = await Axios.get(
           SERVER_ADDRESS + `/products/getproduct/${props?.product}`
         );
-        return (ProductList.current = response.data);
+        return setProductList(response.data);
       } else {
         if (category && category !== "all" && category !== null) {
           // If products hook initialized with a category id
@@ -65,32 +59,33 @@ export default function useProducts(props) {
             SERVER_ADDRESS +
               `/products/getproduct/category/${
                 category.categoryid ? category.categoryid : category
-              }`
+              }&p=${Pagination.current}`
           );
         } else if (props?.allProducts) {
+          response = await Axios.get(SERVER_ADDRESS + `/products/getproducts`);
+        } else {
           response = await Axios.get(
-            SERVER_ADDRESS + `/products/getproducts`
+            SERVER_ADDRESS + `/products/getproducts&p=${Pagination.current}`
           );
-          setTotalCount(response.products?.length);
         }
-        else {
-          response = await Axios.get(
-            SERVER_ADDRESS + `/products/getproducts&p=${Pagination}`
-          );
-          setTotalCount(response.data.products.count);
-        }
+
         if (
-          response.data.products.rows.length > 0 &&
-          ProductList.current.length < response.data.products?.count
+          response?.data?.products?.rows.length > 0 &&
+          ProductList.length < response.data.products?.count
         )
-          ProductList.current = [
-            ...ProductList.current,
-            ...response.data.products.rows,
-          ];
+        console.log(response);
+
+          setTotalCount(response.data.products.count);
+        setProductList([...ProductList, ...response.data.products.rows]);
+        // ProductList.current = [
+        //   ...ProductList.current,
+        //   ...response.data.products.rows,
+        // ];
       }
     } catch (error) {
       console.log(error);
     } finally {
+      console.log("ABC");
       setFetching(false);
     }
   }
@@ -101,7 +96,6 @@ export default function useProducts(props) {
       for (var i = 0; i < imageArr.length; i++) {
         fdata.append("image", imageArr[i]);
       }
-      console.log(newProduct)
       fdata.append("id", newProduct.id);
       fdata.append("producttitle", newProduct.producttitle.trim());
       fdata.append("price", newProduct.price);
@@ -149,25 +143,20 @@ export default function useProducts(props) {
     }
   }
 
-  function nextPage() {
-    console.log(Pagination + " totalCount: "+ TotalCount);
-    // console.log(fetching);
-
-    if ((Pagination === 0 || Pagination < TotalCount) && !fetching)
-      if (TotalCount - Pagination >= 6) {
-        console.log(Pagination);
-        setPagination((Pagination) => Pagination + 6);
+  function nextPage(page) {
+    if ((Pagination.current === 0 || Pagination.current < TotalCount) && fetching === false) {
+      if (TotalCount - Pagination.current >= 6) {
+        Pagination.current = Pagination.current + 6;
         fetchProductList();
       } else {
-        console.log(TotalCount - Pagination);
         fetchProductList();
       }
+    }
   }
-
   if (FilteredProductList) return [FilteredProductList];
   else
     return [
-      ProductList.current,
+      ProductList,
       uploadProduct,
       removeProduct,
       nextPage,
