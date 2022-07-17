@@ -8,7 +8,7 @@ import {
   SERVER_ADDRESS,
 } from "../../Constants/generalConstants";
 import TextField from "@mui/material/TextField";
-
+import paypal from "../../Images/paypal-logo.png";
 const QuantitiesArray = Array.from({ length: 8 }, (_, i) => i + 1);
 
 export default function Cart(props) {
@@ -129,6 +129,28 @@ export default function Cart(props) {
           <button className="buy-btn" onClick={() => handleSubmitOrder()}>
             בצע הזמנה
           </button>
+          <img
+            src={paypal}
+            width={"85%"}
+            style={{ margin: "0 auto" }}
+            alt="secure checkout"
+          />
+          <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
+            <img
+              src={"https://cdn-icons-png.flaticon.com/512/483/483408.png"}
+              alt="lock"
+              width={18}
+              style={{margin: '0 1%', objectFit: 'contain'}}
+            />
+                        <span>רכישה מאובטחת</span>
+                        <img
+              src={"https://cdn-icons-png.flaticon.com/512/483/483408.png"}
+              alt="lock"
+              width={18}
+              style={{margin: '0 1%', objectFit: 'contain'}}
+            />
+
+          </div>
         </div>
       </div>
     </div>

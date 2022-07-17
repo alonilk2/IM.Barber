@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { SERVER_ADDRESS } from "../Constants/generalConstants";
 
 export default function useProducts(props) {
-  // const [ProductList, setProductList] = useState([]);
   const [FilteredProductList, setFilteredProductList] = useState([]);
   const [TotalCount, setTotalCount] = useState(0);
   const [fetching, setFetching] = useState(false);
@@ -19,9 +18,9 @@ export default function useProducts(props) {
     FilterResults();
   }, [filterBy]);
 
-  // useEffect(() => {
-  //   fetchProductList();
-  // }, [category, Pagination.current]);
+  useEffect(() => {
+    if (props?.allProducts || props.product) fetchProductList();
+  }, []);
 
   function FilterResults() {
     let tempProducts = [];
@@ -41,11 +40,9 @@ export default function useProducts(props) {
 
   async function fetchProductList() {
     try {
-      let response;
-      console.log(fetching + " - " + Pagination.current);
       if (fetching) return;
-
       setFetching(true);
+      let response;
       if (props?.product) {
         // If products hook initialized with a product id
         response = await Axios.get(
@@ -73,19 +70,13 @@ export default function useProducts(props) {
           response?.data?.products?.rows.length > 0 &&
           ProductList.length < response.data.products?.count
         )
-        console.log(response);
-
-          setTotalCount(response.data.products.count);
+        setTotalCount(response.data.products.count);
         setProductList([...ProductList, ...response.data.products.rows]);
-        // ProductList.current = [
-        //   ...ProductList.current,
-        //   ...response.data.products.rows,
-        // ];
+
       }
     } catch (error) {
       console.log(error);
     } finally {
-      console.log("ABC");
       setFetching(false);
     }
   }
@@ -144,7 +135,10 @@ export default function useProducts(props) {
   }
 
   function nextPage(page) {
-    if ((Pagination.current === 0 || Pagination.current < TotalCount) && fetching === false) {
+    if (
+      (Pagination.current === 0 || Pagination.current < TotalCount) &&
+      fetching === false
+    ) {
       if (TotalCount - Pagination.current >= 6) {
         Pagination.current = Pagination.current + 6;
         fetchProductList();
