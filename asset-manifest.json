@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/IM.Barber-React-NodeJS-Express-PostgreSQL/static/css/main.16216762.css",
+    "main.js": "/IM.Barber-React-NodeJS-Express-PostgreSQL/static/js/main.224e4e07.js",
+    "static/media/login-bg.png": "/IM.Barber-React-NodeJS-Express-PostgreSQL/static/media/login-bg.f49d77ed4e054711f15f.png",
+    "static/media/1.png": "/IM.Barber-React-NodeJS-Express-PostgreSQL/static/media/1.28c8fc6d49a0c46df3c1.png",
+    "static/media/idan.webp": "/IM.Barber-React-NodeJS-Express-PostgreSQL/static/media/idan.9128d75bf1743bfdb8c2.webp",
+    "static/media/2.webp": "/IM.Barber-React-NodeJS-Express-PostgreSQL/static/media/2.e04b1269e6fc2a1f71e2.webp",
+    "static/media/logo.svg": "/IM.Barber-React-NodeJS-Express-PostgreSQL/static/media/logo.5756b7bc906a625157acf3fcd80de5f0.svg",
+    "static/media/3.webp": "/IM.Barber-React-NodeJS-Express-PostgreSQL/static/media/3.8758a46221c8a0a5e252.webp",
+    "static/media/paypal-logo.png": "/IM.Barber-React-NodeJS-Express-PostgreSQL/static/media/paypal-logo.4dd0da9df67ca8f92aa4.png",
+    "static/media/abdev.webp": "/IM.Barber-React-NodeJS-Express-PostgreSQL/static/media/abdev.9cd56eeee649505dc893.webp",
+    "index.html": "/IM.Barber-React-NodeJS-Express-PostgreSQL/index.html",
+    "main.16216762.css.map": "/IM.Barber-React-NodeJS-Express-PostgreSQL/static/css/main.16216762.css.map",
+    "main.224e4e07.js.map": "/IM.Barber-React-NodeJS-Express-PostgreSQL/static/js/main.224e4e07.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.16216762.css",
+    "static/js/main.224e4e07.js"
+  ]
+}
