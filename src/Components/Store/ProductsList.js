@@ -41,7 +41,6 @@ function ProductsList(props) {
     dispatch({ type: SHOW_ADD_CART });
   };
 
-  console.log(ProductList.length + " Total: " + TotalCount);
   const searchTitleRender = () => {
     if (search && search.filterBy?.length > 0) {
       searchFlag.current = true;
@@ -69,11 +68,8 @@ function ProductsList(props) {
     });
   }, [category, CategoryArr]);
 
-
-  useEffect(() => {}, [ProductList]);
-
   const renderProductList = () => {
-    if (ProductList) {
+    if (ProductList && ProductList.length > 0) {
       return ProductList.map(function (product, idx) {
         return (
           <div className="col featured-products-col">
@@ -111,8 +107,6 @@ function ProductsList(props) {
     return <Lottie options={defaultOptions} height={150} width={150} />;
   };
 
-  console.log(ProductList.length + " ___ " + TotalCount);
-
   const categoryImagesRender = () => {
     if (_category)
       return (
@@ -131,7 +125,7 @@ function ProductsList(props) {
         </div>
       );
   };
-  console.log(TotalCount)
+
   return (
     <div>
       {categoryImagesRender()}
@@ -141,7 +135,7 @@ function ProductsList(props) {
         <InfiniteScroll
           loadMore={nextPage}
           pageStart={1}
-          hasMore={ProductList.length === 0 || ProductList.length < TotalCount}
+          hasMore={ProductList.length < TotalCount}
           loader={
             <div className="loader" key={0}>
               Loading ...

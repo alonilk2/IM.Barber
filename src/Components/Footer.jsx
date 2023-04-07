@@ -18,12 +18,12 @@ function Footer() {
       <div className="row">
         <div className="col sitemap-container">
           <h5 className="title">מפת האתר</h5>
-          <a className="foot-link" href="/">
+          <button className="foot-link" onClick={() => history.push("/")}>
             דף הבית
-          </a>
-          <a className="foot-link" href="/store">
+          </button>
+          <button className="foot-link" onClick={() => history.push("/store")}>
             חנות המוצרים
-          </a>
+          </button>
           <a
             className="foot-link"
             href="https://www.instagram.com/_im.barber_/"
@@ -33,13 +33,13 @@ function Footer() {
           <button className="foot-link" onClick={handleContact}>
             צור קשר
           </button>
-          <a className="foot-link" href="/whatsapp">
+          <button className="foot-link" onClick={() => history.push("/whatsapp")}>
             קביעת תור
-          </a>
-          <a className="foot-link" href="/academy">
+          </button>
+          <button className="foot-link" onClick={() => history.push("/academy")}>
             האקדמיה לספרות
-          </a>
-          <a className="foot-link" href="#">
+          </button>
+          <a className="foot-link" href="/#">
             תנאי שימוש ותקנון פרטיות
           </a>
         </div>

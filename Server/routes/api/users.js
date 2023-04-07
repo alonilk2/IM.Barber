@@ -123,25 +123,31 @@ router.post(
         transporter.sendMail(
           MailMessages.Activate(user, req.token, req.body.email),
           (error, info) => {
-            if (error)
-              res.json({
+            if (error) {
+              return res.json({
                 error: error,
                 status: 1,
               });
-            res.json({
+            }
+            return res.json({
               success: true,
               message: info,
               user: user,
             });
           }
         );
+        return res.json({
+          success: true,
+          user: user,
+        });
+      } else {
+        return res.json({
+          success: false,
+          error: 0, // 0 Means user already registered.
+        });
       }
-      res.json({
-        success: false,
-        error: 0, // 0 Means user already registered.
-      });
     } catch (err) {
-      res.json({
+      return res.json({
         success: false,
         error: err,
       });
@@ -185,12 +191,12 @@ router.post("/sendmail", async (req, res) => {
     MailMessages.Contact(req.body.mailContent),
     function (error, info) {
       if (error) {
-        res.json({
+        return res.json({
           error: error,
           status: 1,
         });
       }
-      res.json({
+      return res.json({
         success: true,
         message: info,
       });

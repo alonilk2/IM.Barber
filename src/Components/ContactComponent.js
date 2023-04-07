@@ -26,9 +26,7 @@ const ContactComponent = forwardRef((props, ref) => {
       let response = await Axios.post(SERVER_ADDRESS + "/sendmail", {
         mailContent,
       });
-      if (response) {
-        if (response.data.success) console.log(response);
-      } else console.log("Error: could not fetch posts list from server.");
+      if (!response?.data?.success) console.log("Error: could not fetch posts list from server.");
     } catch (error) {
       console.log(error);
     }
@@ -45,7 +43,7 @@ const ContactComponent = forwardRef((props, ref) => {
             style={{ padding: 0 }}
             allowFullScreen
             title="Map"
-            src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJVVVZIohOHBURZqZWbpTBPg8&key=AIzaSyCTZk_p4VVZUVKlIAX-tV1K9NaoqpgjWwY"
+            src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJTfBc1NFOHBURycVqFFvKNC0&key=AIzaSyCTZk_p4VVZUVKlIAX-tV1K9NaoqpgjWwY"
           ></iframe>
         </div>
       </Fade>
@@ -57,21 +55,21 @@ const ContactComponent = forwardRef((props, ref) => {
         <div className="col contact-container">
           <TextField
             fullWidth
-            id="standard-basic"
+            id="input-name"
             label="שם מלא"
             variant="standard"
             onChange={(e) => setName(e.target.value)}
           />
           <TextField
             fullWidth
-            id="standard-basic"
+            id="input-email"
             label="אימייל"
             variant="standard"
             onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
             fullWidth
-            id="standard-basic"
+            id="input-phone"
             label="פלאפון"
             variant="standard"
             onChange={(e) => setPhone(e.target.value)}
@@ -100,7 +98,7 @@ const ContactComponent = forwardRef((props, ref) => {
                 <div className="col text">
                   <p className="contact-text">
                     כתובתנו: <br />
-                    רחוב הגפן 1,
+                    רחוב יקינטון 3, הר יונה
                     <br />
                     נוף הגליל 17500
                   </p>

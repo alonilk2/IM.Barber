@@ -6,10 +6,12 @@ var app = express();
 const compression = require('compression');
 const PORT = process.env.PORT || 8080;
 const cors = require('cors');
+
 /* ----------------- Database ----------------- */
 app.listen(PORT, function() {
     console.log("first api on port " +PORT);
 })
+
 app.use(cors());
 app.use(require('./routes'));
 app.use(logger('dev'));

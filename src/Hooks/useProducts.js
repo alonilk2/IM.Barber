@@ -7,6 +7,7 @@ import { SERVER_ADDRESS } from "../Constants/generalConstants";
 export default function useProducts(props) {
   const [FilteredProductList, setFilteredProductList] = useState([]);
   const [TotalCount, setTotalCount] = useState(0);
+  const [error, setError] = useState(false);
   const [fetching, setFetching] = useState(false);
   const { filterBy } = useSelector((state) => state.search);
   const [ProductList, setProductList] = useState([]);
@@ -19,7 +20,7 @@ export default function useProducts(props) {
   }, [filterBy]);
 
   useEffect(() => {
-    if (props?.allProducts || props.product) fetchProductList();
+    if (!error && (props?.allProducts || props.product)) fetchProductList();
   }, []);
 
   function FilterResults() {
@@ -65,7 +66,7 @@ export default function useProducts(props) {
             SERVER_ADDRESS + `/products/getproducts&p=${Pagination.current}`
           );
         }
-
+        console.log(response)
         if (
           response?.data?.products?.rows.length > 0 &&
           ProductList.length < response.data.products?.count
@@ -75,7 +76,7 @@ export default function useProducts(props) {
 
       }
     } catch (error) {
-      console.log(error);
+      setError(true)
     } finally {
       setFetching(false);
     }

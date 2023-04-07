@@ -764,13 +764,16 @@ video {
   justify-self: flex-end;
   padding: 2%;
 }
-
+.foot-link:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
 .foot-link {
   font-size: 15px;
   padding: 0 !important;
   margin: 0.3rem;
   color: rgba(255, 255, 255, 0.4) !important;
 }
+
 .foot .title {
   font-weight: 400;
   font-size: 20px;
@@ -1031,7 +1034,10 @@ video {
   margin-bottom: 15% !important;
   flex-wrap: nowrap;
 }
-
+.css-79xub {
+  border-color: black !important;
+  color: black !important;
+}
 @media all and (min-width: 800px) {
   video {
     object-fit: cover;

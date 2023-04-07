@@ -11,7 +11,7 @@ import Container from 'react-bootstrap/Container'
 import useWindowSize from '../Hooks/useWindowSize'
 import CategoryBar from './Store/Header/CategoryBar'
 import { SocialIcon } from 'react-social-icons'
-
+import { history } from '../history'
 const sleep = milliseconds => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
@@ -57,7 +57,7 @@ const MenuComponent = forwardRef((props, ref) => {
               <Nav.Link onClick={handleContact} className='navbar-btn-txt'>
                 צור קשר
               </Nav.Link>
-              <Nav.Link href='/academy' className='navbar-btn-txt'>
+              <Nav.Link onClick={() => history.push("/academy")} className='navbar-btn-txt'>
                 האקדמיה לספרות
               </Nav.Link>
               <Nav.Link
@@ -71,7 +71,7 @@ const MenuComponent = forwardRef((props, ref) => {
               <img src={Logo} className='col logo' alt='IM.Barber Logo' />
             </a>
             <div className='col right-menu'>
-              <Nav.Link href='/store' className='navbar-btn-txt'>
+              <Nav.Link onClick={() => history.push("/store")} className='navbar-btn-txt'>
                 חנות המוצרים
               </Nav.Link>
               <Nav.Link href='/whatsapp' className='navbar-btn-txt'>

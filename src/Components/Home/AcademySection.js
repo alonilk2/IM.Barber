@@ -9,9 +9,9 @@ export default function AcademySection(props) {
           <Fade left cascade delay={100}>
             <div className="col button-col">
               <h1 className="sec-title">האקדמיה של IM.Barber יוצאת לדרך</h1>
-              <a href="/academy">
+              <button onClick={() => props.history.push("/academy")}>
                 <div className="academy-button">גלה עוד...</div>
-              </a>
+              </button>
             </div>
           </Fade>
           <Fade top cascade delay={400}>
