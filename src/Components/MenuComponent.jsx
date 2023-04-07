@@ -74,7 +74,7 @@ const MenuComponent = forwardRef((props, ref) => {
               <Nav.Link onClick={() => history.push("/store")} className='navbar-btn-txt'>
                 חנות המוצרים
               </Nav.Link>
-              <Nav.Link href='/whatsapp' className='navbar-btn-txt'>
+              <Nav.Link onClick={() => history.push("/whatsapp")} className='navbar-btn-txt'>
                 זימון תור
               </Nav.Link>
               <Nav.Link href='/' className='navbar-btn-txt'>
