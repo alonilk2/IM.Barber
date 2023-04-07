@@ -4,7 +4,9 @@ import Lottie from "react-lottie";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import {
-  HIDE_CATEGORY, SERVER_ADDRESS, SHOW_ADD_CART
+  HIDE_CATEGORY,
+  SERVER_ADDRESS,
+  SHOW_ADD_CART,
 } from "../../Constants/generalConstants";
 import "../../CSS/Store.css";
 import useCategories from "../../Hooks/useCategories";
@@ -21,16 +23,14 @@ const defaultOptions = {
 };
 
 function ProductsList(props) {
-  const [add, showAdd] = useState(false);
   const [_category, setCategory] = useState();
   const dispatch = useDispatch();
-  const [ProductList, upload, remove, nextPage, TotalCount, fetching] =
+  const [ProductList, nextPage, TotalCount] =
     useProducts({
       category: props?.category,
     });
   const CategoryArr = useCategories();
   const location = useLocation();
-  const initialRender = useRef(true);
   const searchFlag = useRef(false);
   const search = useSelector((state) => state.search);
   const category = useSelector((state) => state.general?.category);
